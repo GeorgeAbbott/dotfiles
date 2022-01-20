@@ -21,7 +21,7 @@ zstyle :compinstall filename '/home/george/.zshrc'
 export PATH="$PATH:/home/george/.local/bin"
 
 # Configuring applications to use nvidia GPU
-alias mpv='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME="nvidia" __VK_LAYER_NV_optimus="NVIDIA_only" __GL_SHOW_GRAPHICS_OSD=1 mpv'
+alias mpv="prime-run mpv"
 
 # Other general user config
 export USRCONFDIR=/home/george/.usrconf  # Set user configuration directory
@@ -48,12 +48,13 @@ alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 
 # Changing Default Prompt
-PS1='[%F{#ff0000}%n%f| %F{#6a0dad}%1d%f] => '
+# PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
+PS1='[%F{#ff0000}%1d%f] :: '
 PROMPT=$PS1
 
 # Aliases / Functions
 alias ls='ls -a --color=always'
-alias e="exa -a --header --long --git"
+alias e="exa -a --header --long --git --time-style=long-iso"
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias s="systemctl"
 alias c="clear ; e"
