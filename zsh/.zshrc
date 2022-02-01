@@ -49,7 +49,7 @@ alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 # Changing Default Prompt
 # PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
-PS1='[%F{#ff0000}%1d%f] :: '
+PS1='[%F{#ff0000}%1d%f] : '
 PROMPT=$PS1
 
 # Aliases / Functions
@@ -60,7 +60,8 @@ alias s="systemctl"
 alias c="clear ; e"
 alias r="newsboat"
 alias m="ncmpcpp"
-alias v="nvim"
+alias v="vim"
+alias n="nvim"
 alias randbg="wal -i $USRCONFDIR/backgrounds/nice-photos > /dev/null" # random background
 alias rb="wal -R > /dev/null" # refresh bg
 alias rbghs="randbg --backend haishoku" # random background haishoku backend
@@ -70,31 +71,31 @@ alias awl="mn anime-watchlist"
 
 lle() { # Life Log Entry
     if [ -z "$1" ]; then
-        mkdir -p /mnt/Shared/Text/daily-log/$(date +%Y-%m)
-        nvim /mnt/Shared/Text/daily-log/$(date +%Y-%m)/L$(date --iso-8601).txt
+        mkdir -p ~/docs/daily-log/$(date +%Y-%m)
+        nvim ~/docs/daily-log/$(date +%Y-%m)/L$(date --iso-8601).txt
     else 
-        mkdir -p /mnt/Shared/Text/daily-log/$(date +%Y-%m -d $1)
-        nvim /mnt/Shared/Text/daily-log/$(date +%Y-%m -d $1)/L$(date --iso-8601 -d $1).txt
+        mkdir -p ~/docs/daily-log/$(date +%Y-%m -d $1)
+        nvim ~/docs/daily-log/$(date +%Y-%m -d $1)/L$(date --iso-8601 -d $1).txt
     fi
 }
 
 mer() { # Month End Recap - TODO: get this to work just with e.g. mer 2022-01
     if [ -z "$1"]; then 
-        mkdir -p /mnt/Shared/Text/daily-log/$(date +%Y-%m)
-        nvim "/mnt/Shared/Text/daily-log/$(date +%Y-%m)/L$(date +%Y-%m) - Month End Recap"
+        mkdir -p ~/docs/daily-log/$(date +%Y-%m)
+        nvim "~/docs/daily-log/$(date +%Y-%m)/L$(date +%Y-%m) - Month End Recap"
     else 
         mkdir -p /mnt/Shared/Text/daily-log/$(date +%Y-%m -d $1)
-        nvim "/mnt/Shared/Text/daily-log/$(date +%Y-%m -d $1)/L$(date +%Y-%m -d $1) - Month End Recap" 
+        nvim "~/docs/daily-log/$(date +%Y-%m -d $1)/L$(date +%Y-%m -d $1) - Month End Recap" 
     fi
 }
 
 yer() { # Year End Recap - TODO: see mer TODO
     if [ -z "$1"]; then 
-        mkdir -p /mnt/Shared/Text/daily-log/$(date +%Y)-12
-        nvim "/mnt/Shared/Text/daily-log/$(date +%Y)-12/$(date +%Y) - Year End Recap"
+        mkdir -p ~/docs/daily-log/$(date +%Y)-12
+        nvim "~/docs/daily-log/$(date +%Y)-12/$(date +%Y) - Year End Recap"
     else 
-        mkdir -p /mnt/Shared/Text/daily-log/$(date %Y -d $1)-12
-        nvim "/mnt/Shared/Text/daily-log/$(date +%Y -d $1)-12/$(date +%Y -d $1) - Year End Recap"
+        mkdir -p ~/docs/daily-log/$(date %Y -d $1)-12
+        nvim "~/docs/daily-log/$(date +%Y -d $1)-12/$(date +%Y -d $1) - Year End Recap"
     fi
 }
 
@@ -102,7 +103,7 @@ yer() { # Year End Recap - TODO: see mer TODO
 
 
 mn() { # make note
-    nvim "/mnt/Shared/Text/$1"
+    nvim "$HOME/docs/$1"
 }
 alias en="nvim /mnt/Shared/Text"
 alias fin="libreoffice --calc /mnt/Shared/Trackers/Financial/new/$(date +%Y-%m).ods & "
@@ -120,3 +121,4 @@ compinit
 
 # Sourcing for zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
