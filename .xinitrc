@@ -2,11 +2,11 @@
 
 # General Configurations
 setxkbmap gb						# Set keyboard to gb layout
-export SHELL=/bin/zsh					# Set shell to zsh
-wmname LG3D &						# For getting Java applications, e.g. Pycharm, Rider to work.
+# export SHELL=/bin/zsh					# Set shell to zsh
+# wmname LG3D &						# For getting Java applications, e.g. Pycharm, Rider to work.
 
 # Daemons etc.
-mpd                             
+# mpd                             
 
 # Programs for creating desktop
 # picom &     						# Compositor
@@ -16,16 +16,16 @@ mpd
 session=${1:-dwm}
 
 run_dwm() {
-    /usr/bin/prime-offload              # For optimus-manager, nvidia
+    # /usr/bin/prime-offload              # For optimus-manager, nvidia
     # Run all applications that go hand in hand w/ dwm
-    dwmblocks & 
+    # dwmblocks & 
 
     # Start-up apps for dwm
     st & 
     librewolf & 
     keepassxc &
     # discord &
-    firefox & 
+    # firefox & 
 
     while true 
     do
@@ -33,7 +33,7 @@ run_dwm() {
     done
 
 
-    sudo /usr/bin/prime-switch
+    # sudo /usr/bin/prime-switch
 }
 
 run_kde() {
