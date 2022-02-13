@@ -19,7 +19,7 @@
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-lyrics_directory = ~/.config/ncmpcpp/lyrics
+lyrics_directory = ~/.config/ncmpcpp/lyrics # Maybe update this to /var/ncmpcpp/lyrics?
 #
 ##### connection settings #####
 #
@@ -33,7 +33,7 @@ mpd_port = 6600
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = ~/.music
+mpd_music_dir = /var/mpd/music
 #
 #mpd_crossfade_time = 5
 #
