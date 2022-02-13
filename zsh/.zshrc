@@ -10,29 +10,28 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
 # Various
+export LANG=en_GB.UTF-8
 setopt autocd
 unsetopt beep
 bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '/home/george/.zshrc'
 
 # Path
 export PATH="$PATH:/home/george/.local/bin"
 
 # Configuring applications to use nvidia GPU
-alias mpv="prime-run mpv"
+alias pmpv="prime-run mpv"
+
 
 # Other general user config
-export USRCONFDIR=/home/george/.usrconf  # Set user configuration directory
-export LANG=en_GB.UTF-8
+export USRCONFDIR=/home/george/.usrconf  # Set user configuration directory ## TODO: is this needed anymore?
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
-
-# Dealing with .lesshst
+########## Reducing clutter in home directory ##########
 export LESSHISTFILE=/dev/null			# Remove ~/.lesshst generation
-
+alias feh="feh --no-fehbg"
+alias newsboat="newsboat -u ~/.config/newsboat/urls"
 # TODO: add all XDG directories in the right places, and then run the commands
 # as per the SO post: https://stackoverflow.com/questions/26198926/why-does-lesshst-keep-showing-up-in-my
 # to get rid of .lesshst file and where man creates it as well
@@ -40,35 +39,55 @@ export LESSHISTFILE=/dev/null			# Remove ~/.lesshst generation
 # alias less='less --lesskey-file=$XDG_CONFIG_HOME/lesskey'
 # alias man='man --pager="less --lesskey-file=$XDG_CONFIG_HOME/lesskey"'
 
-# Dealing with .fehbg
-alias feh="feh --no-fehbg"
-
-# Newsboat 
-alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 
 # Changing Default Prompt
 # PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
-PS1='[%F{#ff0000}%1d%f] : '
+PS1='[%F{#1111ee}%1d%f] => '
 PROMPT=$PS1
 
-# Aliases / Functions
+########## Aliases / Functions ##########
+# ls / exa 
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso"
-alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias s="systemctl"
 alias c="clear ; e"
-alias r="newsboat"
-alias m="ncmpcpp"
+
+# vim / nvim
 alias v="vim"
 alias n="nvim"
+
+# music: mpd, ncmpcpp, mpc
+alias m="ncmpcpp"
+alias mc="mpc"
+
+# backgrounds, wal...
 alias randbg="wal -i $USRCONFDIR/backgrounds/nice-photos > /dev/null" # random background
 alias rb="wal -R > /dev/null" # refresh bg
 alias rbghs="randbg --backend haishoku" # random background haishoku backend
+
+# todos...
 alias td="mn todos"
 alias wtd="mn work-todos"
-alias awl="mn anime-watchlist"
 
+# anime 
+alias awl="mn anime-watchlist"  # Anime I have seen
+alias atw="mn anime-towatch"    # Anime I should watch 
+
+# git
+# TODO: add command to push to all remote repos, e.g. github, origin and gitlab
+alias gb="git branch"
+alias gco="git checkout" 
+alias gcom="git checkout master"
+alias gdb="git branch -d"
+alias gp="git push"
+
+# misc
+alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+alias r="newsboat"
+# alias en="nvim /mnt/Shared/Text" ## TODO: what was this for? Can I replicate with, e.g. ranger? Is it needed anymore?
+# alias fin="libreoffice --calc /mnt/Shared/Trackers/Financial/new/$(date +%Y-%m).ods & " ## TODO: is this needed anymore? If so, update
+
+# lle... TODO: maybe find a way to make these take up less room in the zshrc?
 lle() { # Life Log Entry
     if [ -z "$1" ]; then
         mkdir -p ~/docs/daily-log/$(date +%Y-%m)
@@ -105,19 +124,14 @@ yer() { # Year End Recap - TODO: see mer TODO
 mn() { # make note
     nvim "$HOME/docs/$1"
 }
-alias en="nvim /mnt/Shared/Text"
-alias fin="libreoffice --calc /mnt/Shared/Trackers/Financial/new/$(date +%Y-%m).ods & "
-
-# Aliases for git
-alias gb="git branch"
-alias gco="git checkout" 
-alias gcom="git checkout master"
-alias gdb="git branch -d"
-
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+# z - must go after compinit
+eval "$(zoxide init zsh)"
+
 
 # Sourcing for zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
