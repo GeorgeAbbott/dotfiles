@@ -72,6 +72,8 @@ alias wtd="mn work-todos"
 # anime 
 alias awl="mn anime-watchlist"  # Anime I have seen
 alias atw="mn anime-towatch"    # Anime I should watch 
+alias ac="mn anime-completed"   # Anime I have completed
+alias ad="mn anime-dropped"     # Anime I have dropped
 
 # git
 # TODO: add command to push to all remote repos, e.g. github, origin and gitlab
