@@ -14,17 +14,17 @@ export LANG=en_GB.UTF-8
 setopt autocd
 unsetopt beep
 bindkey -v
-zstyle :compinstall filename '/home/george/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 # Path
-export PATH="$PATH:/home/george/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Configuring applications to use nvidia GPU
 alias pmpv="prime-run mpv"
 
 
 # Other general user config
-export USRCONFDIR=/home/george/.usrconf  # Set user configuration directory ## TODO: is this needed anymore?
+export USRCONFDIR=$HOME/.usrconf  # Set user configuration directory ## TODO: is this needed anymore?
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
