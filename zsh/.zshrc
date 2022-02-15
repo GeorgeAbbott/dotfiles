@@ -24,7 +24,6 @@ alias pmpv="prime-run mpv"
 
 
 # Other general user config
-export USRCONFDIR=$HOME/.usrconf  # Set user configuration directory ## TODO: is this needed anymore?
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
@@ -61,9 +60,6 @@ alias m="ncmpcpp"
 alias mc="mpc"
 
 # backgrounds, wal...
-alias randbg="wal -i $USRCONFDIR/backgrounds/nice-photos > /dev/null" # random background
-alias rb="wal -R > /dev/null" # refresh bg
-alias rbghs="randbg --backend haishoku" # random background haishoku backend
 
 # todos...
 alias td="mn todos"
