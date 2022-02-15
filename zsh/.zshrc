@@ -82,6 +82,9 @@ alias gco="git checkout"
 alias gcom="git checkout master"
 alias gdb="git branch -d"
 alias gp="git push"
+alias gpa="git push origin && git push github && git push gitlab"
+alias gpl="git pull" # TODO: might be ambiguous with multiple remotes
+alias gs="git status"
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
