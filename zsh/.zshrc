@@ -50,6 +50,7 @@ PROMPT=$PS1
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso"
 alias c="clear ; e"
+alias t="e --tree"
 
 # vim / nvim
 alias v="vim"
