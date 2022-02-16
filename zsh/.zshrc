@@ -81,6 +81,9 @@ alias gp="git push"
 alias gpa="git push origin && git push github && git push gitlab"
 alias gpl="git pull" # TODO: might be ambiguous with multiple remotes
 alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gcm="git commit -m"
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
