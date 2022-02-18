@@ -59,6 +59,9 @@ alias n="nvim"
 # music: mpd, ncmpcpp, mpc
 alias m="ncmpcpp"
 alias mc="mpc"
+alias mpp="mpc pause"
+alias mpl="mpc play"
+alias mps="mpc stop"
 
 # backgrounds, wal...
 
