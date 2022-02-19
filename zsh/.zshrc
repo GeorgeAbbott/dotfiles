@@ -62,6 +62,8 @@ alias mc="mpc"
 alias mpp="mpc pause"
 alias mpl="mpc play"
 alias mps="mpc stop"
+alias mnx="mpc next"
+alias mprv="mpc prev"
 
 # backgrounds, wal...
 
@@ -74,6 +76,15 @@ alias awl="mn anime-watchlist"  # Anime I have seen
 alias atw="mn anime-towatch"    # Anime I should watch 
 alias ac="mn anime-completed"   # Anime I have completed
 alias ad="mn anime-dropped"     # Anime I have dropped
+
+# documents
+alias p="zathura" 
+alias o="libreoffice --writer" 
+
+# pulseaudio - this is a temporary solution
+sv() {
+    pactl set-sink-volume 0 $1%
+}
 
 # git
 # TODO: add command to push to all remote repos, e.g. github, origin and gitlab
