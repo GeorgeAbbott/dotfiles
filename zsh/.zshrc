@@ -1,5 +1,5 @@
 # History
-HISTFILE=~/.config/zsh/zsh_history
+HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1001
 SAVEHIST=1000
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -15,9 +15,6 @@ setopt autocd
 unsetopt beep
 bindkey -v
 zstyle :compinstall filename "$HOME/.zshrc"
-
-# Path
-export PATH="$PATH:$HOME/.local/bin"
 
 # Configuring applications to use nvidia GPU
 alias pmpv="prime-run mpv"
@@ -37,8 +34,6 @@ alias newsboat="newsboat -u ~/.config/newsboat/urls"
 
 # alias less='less --lesskey-file=$XDG_CONFIG_HOME/lesskey'
 # alias man='man --pager="less --lesskey-file=$XDG_CONFIG_HOME/lesskey"'
-
-
 
 # Changing Default Prompt
 # PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
