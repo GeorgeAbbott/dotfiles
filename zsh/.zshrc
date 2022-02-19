@@ -49,7 +49,9 @@ PROMPT=$PS1
 # ls / exa 
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso"
+alias ev="exa --header --long --git --time-style=long-iso" # Exa View
 alias c="clear ; e"
+alias cv="clear ; ev" # Clear + Exa View
 alias t="e --tree"
 
 # vim / nvim
