@@ -73,6 +73,7 @@ alias mpr="mpc prev"
 # todos...
 alias td="mn todos"
 alias wtd="mn work-todos"
+alias cld="mn calendar" 
 
 # anime 
 alias awl="mn anime-watchlist"  # Anime I have seen
