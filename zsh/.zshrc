@@ -41,6 +41,9 @@ PS1='[%F{#1111ee}%1d%f] => '
 PROMPT=$PS1
 
 ########## Aliases / Functions ##########
+# allow sudo to make use of aliases
+alias sudo="sudo "
+
 # ls / exa 
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso"
