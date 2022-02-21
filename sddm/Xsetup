@@ -1,0 +1,7 @@
+#!/bin/sh
+# Xsetup - run as root before the login dialog appears
+
+# Swaps CAPSLOCK and ESC keys, e.g. for vim.
+# According to Arch Wiki, this only sets for SDDM and not subsequent sessions.
+setxkbmap -option caps:swapescape
+
