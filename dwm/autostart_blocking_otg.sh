@@ -1,4 +1,3 @@
 #!/bin/sh
 
-# TODO: make this random bg
-feh --bg-scale ~/bgs/evening-sun-over-rice-paddies.jpg
+feh --bg-scale $(shuf -n1 -e ~/bgs/*)
