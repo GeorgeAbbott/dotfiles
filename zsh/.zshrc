@@ -75,6 +75,10 @@ alias td="mn todos"
 alias wtd="mn work-todos"
 alias cld="mn calendar" 
 
+alias tdcmp="mn todos-cmp"
+alias cldcmp="mn calendar-cmp"
+
+
 # anime 
 alias awl="mn anime-watchlist"  # Anime I have seen
 alias atw="mn anime-towatch"    # Anime I should watch 
