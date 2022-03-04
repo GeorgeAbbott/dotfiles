@@ -149,7 +149,7 @@ yer() { # Year End Recap - TODO: see mer TODO
 
 
 mn() { # make note
-    nvim "$HOME/docs/$1"
+    nvim "$HOME/docs/written/$1"
 }
 
 autoload -Uz compinit
