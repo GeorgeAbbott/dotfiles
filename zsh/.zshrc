@@ -89,7 +89,6 @@ alias mpr="mpc prev"
 
 # todos...
 alias td="mn todos"
-alias wtd="mn work-todos"
 alias cld="mn calendar" 
 
 alias tdcmp="mn todos-cmp"
