@@ -38,6 +38,7 @@ alias newsboat="newsboat -u ~/.config/newsboat/urls"
 # Changing Default Prompt
 # PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
 # PS1='[%F{#1111ee}%1d%f] => '
+# PS1="%? | [%F{#ff0000}%n%f] [$(vcs_info_wrapper)] %2~ %# "
 # Creates a git prompt
 git_branch_test_color() {
   local ref=$(git symbolic-ref --short HEAD 2> /dev/null)
@@ -53,12 +54,8 @@ git_branch_test_color() {
   fi
 }
 setopt PROMPT_SUBST
-# PS1="%? | [%F{#ff0000}%n%f] [$(vcs_info_wrapper)] %2~ %# "
 PROMPT='%9c$(git_branch_test_color)%F{none} %# '
 RPROMPT='%D{%k:%M:%S}'
-
-
-# PROMPT=$PS1
 
 ########## Aliases / Functions ##########
 # allow sudo to make use of aliases
