@@ -10,13 +10,6 @@ session=${1:-dwm}
 
 run_dwm() {
     # Run all applications that go hand in hand w/ dwm
-    # dwmblocks & 
-
-    # Start-up apps for dwm
-    st & 
-    librewolf & 
-    keepassxc &
-    discord &
 
     while true 
     do
