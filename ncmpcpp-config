@@ -19,7 +19,7 @@
 ## MPD clients (eg. ncmpc) also use that location.
 ##
 #
-lyrics_directory = ~/.config/ncmpcpp/lyrics # Maybe update this to /var/ncmpcpp/lyrics?
+lyrics_directory = ~/.config/ncmpcpp/lyrics 
 #
 ##### connection settings #####
 #
@@ -33,7 +33,7 @@ mpd_port = 6600
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = /var/mpd/music
+mpd_music_dir = /var/lib/mpd/music
 #
 #mpd_crossfade_time = 5
 #
@@ -407,7 +407,8 @@ mpd_music_dir = /var/mpd/music
 #
 #cyclic_scrolling = no
 #
-#lyrics_fetchers = azlyrics, genius, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
+# Removed genius as it always plays me up
+lyrics_fetchers = azlyrics, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 #
 #follow_now_playing_lyrics = no
 #
