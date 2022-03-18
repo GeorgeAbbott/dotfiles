@@ -126,7 +126,7 @@ alias gcm="git commit -m"
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias r="newsboat"
+alias r="prime-run newsboat"
 # alias en="nvim /mnt/Shared/Text" ## TODO: what was this for? Can I replicate with, e.g. ranger? Is it needed anymore?
 # alias fin="libreoffice --calc /mnt/Shared/Trackers/Financial/new/$(date +%Y-%m).ods & " ## TODO: is this needed anymore? If so, update
 
