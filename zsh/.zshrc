@@ -89,11 +89,11 @@ alias mpr="mpc prev"
 
 # todos...
 alias td="mn todos"
-alias cld="mn calendar" 
-
 alias tdcmp="mn todos-cmp"
-alias cldcmp="mn calendar-cmp"
+alias tdntd="mn todos-ntd"
 
+alias cld="mn calendar" 
+alias cldcmp="mn calendar-cmp"
 
 # anime 
 alias awl="mn anime-watchlist"  # Anime I have seen
