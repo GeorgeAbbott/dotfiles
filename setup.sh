@@ -2,8 +2,9 @@
 
 # Installer for my setup for Arch based distro.
 
-# This should be in the user config directory, e.g. ~/.usrconf
-# or ~/git as examples of where to install it. 
+# The dotfiles should be installed in $HOME/git/dotfiles
+# for this script to work. 
+
 # It should be run as sudo: sudo ./setup.sh
 # By default, installs both dwm and kde, to just install dwm 
 # pass the parameter "minimal", e.g.
@@ -56,6 +57,15 @@ pacman -S plasma kde-applications sddm
 
 # TODO: add the dwm entry to XSessions
 
+####################################################################################
+###################### Making some directories for later use #######################
+mkdir -p $HOME/.config
+mkdir -p $HOME/.config/zsh
+mkdir -p $HOME/.config/newsboat
+mkdir -p $HOME/.config/mpd
+mkdir -p $HOME/.config/ncmpcpp
+mkdir -p $HOME/.local/share/dwm
+
 #####################################################################################
 ######## These are only installed in a minimal installation, as a non-minimal #######
 ######### install should already contain applications that fit this purpose. ########
@@ -77,7 +87,7 @@ yay    -S exa htop                                          # Command line utili
 pacman -S zoxide 
 
 ############################### git clone from repo #################################
-git clone git.sateoki.xyz/self/dotfiles .
+# TODO: git clone all repos here 
 git clone git.sateoki.xyz/self/st       ./inst
 git clone git.sateoki.xyz/self/dwm      ./inst
 git clone git.sateoki.xyz/self/dmenu    ./inst
@@ -88,9 +98,18 @@ git clone git.sateoki.xyz/self/dmenu    ./inst
 sh ./scripts/udcmdlink                                                           #####
 
 ######################### Set up symlinks to dotfiles ################################
-symmove ./dotfiles/zsh/.zshrc     ~/.zshrc
-symmove ./dotfiles/zsh/.zshenv    ~/.zshenv
-symmove ./dotfiles/.xinitrc       ~/.xinitrc
+ln -s $HOME/git/dotfiles/zsh/.zshrc     $HOME/.config/zsh/.zshrc
+ln -s $HOME/git/dotfiles/zsh/.zshenv    $HOME/.zshenv
+ln -s $HOME/git/dotfiles/.xinitrc       $HOME/.xinitrc
+
+# Music
+ln -s $HOME/git/dotfiles/mpd.conf       $HOME/.config/mpd.conf
+ln -s $HOME/git/dotfiles/mpd.conf       /etc/mpd.conf
+ln -s $HOME/git/dotfiles/ncmpcpp-config $HOME/.config/ncmpcpp/config
+
+# sddm - only install if MINIMAL="no" 
+
+
 # TBA the rest
 
 # Ensure that in .zshrc, the variable $USRCONFDIR is exported correctly
