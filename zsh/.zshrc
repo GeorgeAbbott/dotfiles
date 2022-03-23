@@ -105,6 +105,11 @@ alias ad="mn anime-dropped"     # Anime I have dropped
 alias p="zathura" 
 alias o="libreoffice --writer" 
 
+# file manipulation
+defix() {
+    for i in  "$1"*;do mv "$i" "${i#"$1"}";done
+}
+
 # pulseaudio - this is a temporary solution
 sv() {
     pactl set-sink-volume 0 $1%
