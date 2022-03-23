@@ -4,3 +4,5 @@ feh --bg-scale $(shuf -n1 -e ~/bgs/*)
 dwmblocks &
 st &
 
+# Notifications
+dunst & 
