@@ -128,6 +128,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gf="git fetch"
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
