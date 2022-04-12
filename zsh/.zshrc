@@ -129,6 +129,11 @@ alias ga="git add"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gf="git fetch"
+gar() { # Add remotes
+    git remote add origin gitea@git.gabbott.xyz:self/$1.git
+    git remote add github git@github.com:GeorgeAbbott/$1.git
+    git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
+}
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
