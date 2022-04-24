@@ -36,7 +36,7 @@ fi
 
 ########################### Setup everything necessary ###############################
 # Install X Server
-pacman -S xorg xorg-xinit
+pacman -S xorg xorg-xinit xorg-xbacklight
 
 # Install Libraries Needed
 pacman -S libxft fontconfig ntfs-3g
