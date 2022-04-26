@@ -36,7 +36,7 @@ fi
 
 ########################### Setup everything necessary ###############################
 # Install X Server
-pacman -S xorg xorg-xinit
+pacman -S xorg xorg-xinit xorg-xbacklight
 
 # Install Libraries Needed
 pacman -S libxft fontconfig ntfs-3g
@@ -52,8 +52,9 @@ pacman -S curl git zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighti
 
 #####################################################################################
 ############# These are only installed in a non-minimal installation. ###############
-
-pacman -S plasma kde-applications sddm
+if [[ $MINIMAL="no" ]] ; then 
+    pacman -S plasma kde-applications sddm
+fi
 
 # TODO: add the dwm entry to XSessions
 
@@ -72,11 +73,12 @@ mkdir -p $HOME/.local/share/dwm
 
 ########################## Install Necessary Packages ################################
 ##### Where e.g. fonts are in pacman, these are installed under its own section. #####
-pacman -S libnotify			                                # Notifications
-pacman -S sxiv python-pywal			                        # Background
-pacman -S polkit			                                # poweroff w/o sudo
-yay    -S vscodium-bin vscodium-bin-marketplace             # For C++ & C#
-pacman -S vim neovim                                        # For Rust etc.
+pacman -S libnotify dunst                                   # Notifications
+pacman -S sxiv python-pywal                                 # Background
+pacman -S polkit                                            # poweroff w/o sudo
+yay    -S vscodium-bin vscodium-bin-marketplace             # Vscodium
+pacman -S vim neovim                                        # Vim
+pacman -S rust-analyzer ccls                                # Nvim LSP
 pacman -S torbrowser-launcher firefox                       # Browsers
 yay    -S librewolf-bin
 pacman -S mpd ncmpcpp mpc mpv                               # Music etc.
@@ -84,7 +86,7 @@ pacman -S zathura zathura-pdf-mupdf                         # PDF Viewer
 pacman -S keepassxc                                         # Password Manager
 
 yay    -S exa htop                                          # Command line utilities
-pacman -S zoxide 
+pacman -S zoxide bat dust                                   
 
 ############################### git clone from repo #################################
 # TODO: git clone all repos here 
