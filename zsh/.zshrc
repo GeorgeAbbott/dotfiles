@@ -104,6 +104,7 @@ alias ad="mn anime-dropped"     # Anime I have dropped
 # documents
 alias p="zathura" 
 alias o="libreoffice --writer" 
+alias b="bat"
 
 # file manipulation
 defix() {
