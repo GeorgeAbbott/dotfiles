@@ -25,7 +25,6 @@ autoload -U colors && colors
 autoload -U promptinit && promptinit
 
 ########## Reducing clutter in home directory ##########
-export LESSHISTFILE=/dev/null			# Remove ~/.lesshst generation
 alias feh="feh --no-fehbg"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 # TODO: add all XDG directories in the right places, and then run the commands
@@ -134,6 +133,11 @@ gar() { # Add remotes
     git remote add origin gitea@git.gabbott.xyz:self/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
     git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
+}
+gro() { # Rename all origins
+    git remote set-url origin gitea@git.gabbott.xyz:self/$1.git
+    git remote set-url github git@github.com:GeorgeAbbott/$1.git
+    git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
 
 # misc
