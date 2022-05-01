@@ -123,7 +123,7 @@ alias gcom="git checkout master"
 alias gdb="git branch -d"
 alias gp="git push"
 alias gpa="gp origin && gp github && gp gitlab"
-alias gpl="git pull" # TODO: might be ambiguous with multiple remotes
+alias gpl="git pull" 
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
@@ -143,10 +143,7 @@ gro() { # Rename all origins
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias r="prime-run newsboat"
-# alias en="nvim /mnt/Shared/Text" ## TODO: what was this for? Can I replicate with, e.g. ranger? Is it needed anymore?
-# alias fin="libreoffice --calc /mnt/Shared/Trackers/Financial/new/$(date +%Y-%m).ods & " ## TODO: is this needed anymore? If so, update
 
-# lle... TODO: maybe find a way to make these take up less room in the zshrc?
 lle() { # Life Log Entry
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
     mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
