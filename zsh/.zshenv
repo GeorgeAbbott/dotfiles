@@ -16,6 +16,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
 export GOPATH="$XDG_DATA_HOME"/go
 export LESSHISTFILE=/dev/null
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
 # ZSH Directories
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
