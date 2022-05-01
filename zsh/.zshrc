@@ -148,18 +148,21 @@ alias r="prime-run newsboat"
 
 # lle... TODO: maybe find a way to make these take up less room in the zshrc?
 lle() { # Life Log Entry
-    mkdir -p ~/docs/daily-log/$(date +%Y-%m -d $1)
-    nvim ~/docs/daily-log/$(date +%Y-%m -d $1)/L$(date --iso-8601 -d $1).txt
+    if [ -z $1 ] ; then DT="today" else DT="$1" fi
+    mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
+    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
 }
 
 mer() { # Month End Recap - TODO: get this to work just with e.g. mer 2022-01
-    mkdir -p ~/docs/daily-log/$(date +%Y-%m -d $1)
-    nvim "~/docs/daily-log/$(date +%Y-%m -d $1)/L$(date +%Y-%m -d $1) - Month End Recap" 
+    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
+    mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
+    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT) - Month End Recap.txt" 
 }
 
-yer() { # Year End Recap - TODO: see mer TODO
-        mkdir -p ~/docs/daily-log/$(date %Y -d $1)-12
-        nvim "~/docs/daily-log/$(date +%Y -d $1)-12/$(date +%Y -d $1) - Year End Recap"
+yer() { # Year End Recap - TODO: see mer todos
+    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
+    mkdir -p "$HOME/docs/daily-log/$(date %Y -d $DT)-12"
+    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT) - Year End Recap.txt"
 }
 
 mn() { # make note
