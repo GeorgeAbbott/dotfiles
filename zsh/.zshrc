@@ -101,6 +101,12 @@ alias atw="mn anime-towatch"    # Anime I should watch
 alias ac="mn anime-completed"   # Anime I have completed
 alias ad="mn anime-dropped"     # Anime I have dropped
 
+# TV
+alias tvwl="mn tv-watchlist"
+alias tvtw="mn tv-towatch"
+alias tvc="mn tv-completed"
+alias tvd="mn tv-dropped"
+
 # documents
 alias p="zathura" 
 alias o="libreoffice --writer" 
