@@ -151,6 +151,10 @@ gpr() { # Print all remotes
     git remote get-url github 
     git remote get-url gitlab 
 }
+gcar() { # Git clone from origin url and then add in the rest of remotes
+    git clone gitea@git.gabbott.xyz:self/$1.git
+    gar
+}
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
