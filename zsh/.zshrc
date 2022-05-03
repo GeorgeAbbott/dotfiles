@@ -153,7 +153,8 @@ gpr() { # Print all remotes
 }
 gcar() { # Git clone from origin url and then add in the rest of remotes
     git clone gitea@git.gabbott.xyz:self/$1.git
-    gar
+    cd ./$1
+    gar $1
 }
 
 # misc
