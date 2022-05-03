@@ -141,7 +141,7 @@ gar() { # Add remotes
     git remote add github git@github.com:GeorgeAbbott/$1.git
     git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
-gro() { # Rename all origins
+grr() { # Rename all remotes 
     git remote set-url origin gitea@git.gabbott.xyz:self/$1.git
     git remote set-url github git@github.com:GeorgeAbbott/$1.git
     git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
