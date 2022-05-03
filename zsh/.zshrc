@@ -146,6 +146,11 @@ grr() { # Rename all remotes
     git remote set-url github git@github.com:GeorgeAbbott/$1.git
     git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
+gpr() { # Print all remotes
+    git remote get-url origin 
+    git remote get-url github 
+    git remote get-url gitlab 
+}
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
