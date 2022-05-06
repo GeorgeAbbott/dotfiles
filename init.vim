@@ -8,10 +8,11 @@ set tabstop=4               " number of columns occupied by a tab
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
-set autoindent              " indent a new line the same amount as the line just typed
+set autoindent              " indent a new line the same amount as the line just typed and this is cool
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
-set cc=80                  " set an 80 column border for good coding style
+set cc=80                   " set an 80 column border for good coding style
+highlight ColorColumn ctermbg=darkcyan
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
@@ -30,6 +31,17 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Rainbow brackets for easy viewing
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" Autoclose brackets
+Plug 'cohama/lexima.vim'
+let g:lexima_enable_basic_rules = 1
+let g:lexima_enable_newline_rules = 1
+let g:enable_endwise_rules = 1
+
 
 " For Rust development
 Plug 'hrsh7th/nvim-cmp'         " Completion framework
@@ -67,6 +79,7 @@ set signcolumn=yes
 lua <<EOF
 local nvim_lsp = require'lspconfig'
 
+-- C++  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 local lspconfig = require'lspconfig'
 lspconfig.ccls.setup {
   init_options = {
@@ -83,6 +96,25 @@ lspconfig.ccls.setup {
   }
 }
 require'lspconfig'.ccls.setup{}
+-- C++  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+-- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+require'lspconfig'.ltex.setup{}
+require'lspconfig'.gopls.setup{
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod"},
+    root_dir = require'lspconfig/util'.root_pattern("go.work", "go.mod", ".git"),
+    settings = { 
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}
+
+-- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 local opts = {
     tools = { -- rust-tools options

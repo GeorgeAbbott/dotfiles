@@ -35,6 +35,9 @@ fi
 
 
 ########################### Setup everything necessary ###############################
+# Various Basic Things
+pacman -S pacman-contrib
+
 # Install X Server
 pacman -S xorg xorg-xinit xorg-xbacklight
 
