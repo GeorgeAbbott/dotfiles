@@ -1,2 +1,4 @@
 newsboat/cache.db
+newsboat/urls
 .gitignore.d/
+
