@@ -81,7 +81,7 @@ pacman -S sxiv python-pywal                                 # Background
 pacman -S polkit                                            # poweroff w/o sudo
 yay    -S vscodium-bin vscodium-bin-marketplace             # Vscodium
 pacman -S vim neovim                                        # Vim
-pacman -S rust-analyzer ccls                                # Nvim LSP
+pacman -S rust-analyzer ccls gopls                          # Nvim LSP
 pacman -S torbrowser-launcher firefox                       # Browsers
 yay    -S librewolf-bin
 pacman -S mpd ncmpcpp mpc mpv                               # Music etc.
