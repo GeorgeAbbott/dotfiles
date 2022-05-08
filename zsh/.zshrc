@@ -75,7 +75,6 @@ alias n="nvim"
 
 # music: mpd, ncmpcpp, mpc
 alias m="ncmpcpp"
-alias mc="mpc"
 
 alias mps="mpc pause"
 alias mpl="mpc play"
@@ -106,6 +105,19 @@ alias tvwl="mn tv-watchlist"
 alias tvtw="mn tv-towatch"
 alias tvc="mn tv-completed"
 alias tvd="mn tv-dropped"
+
+# Manga
+alias mrl="mn manga-readlist"
+alias mtr="mn manga-toread"
+alias mc="mn manga-completed"
+alias md="mn manga-dropped"
+
+# Book 
+alias brl="mn book-readlist"
+alias btr="mn book-toread"
+alias bc="mn book-completed"
+alias bd="mn book-dropped"
+
 
 # documents
 alias p="zathura" 
