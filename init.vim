@@ -19,6 +19,8 @@ set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set ttyfast                 " Speed up scrolling in Vim
+set cursorline
+set background=dark
 " set backupdir=~/.cache/vim " Directory to store backup files.
     
 " vim-plug -> 
@@ -27,6 +29,24 @@ call plug#begin('~/.config/nvim/plugged')
 " Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 
+" Themes
+Plug 'folke/tokyonight.nvim'
+let g:tokyonight_style = 'night' " night; storm; day 
+let g:tokyonight_enable_italic = 1 
+
+Plug 'morhetz/gruvbox'
+let g:gruvbox_italic = 1
+
+Plug 'sjl/badwolf'
+let g:badwolf_darkgutter = 1
+let g:badwolf_css_props_highlight = 1
+
+Plug 'arcticicestudio/nord-vim'
+
+Plug 'ciaranm/inkpot'
+
+
+
 " Easy alignment
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
@@ -34,7 +54,7 @@ nmap ga <Plug>(EasyAlign)
 
 " Rainbow brackets for easy viewing
 Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 
 
 " Autoclose brackets
 Plug 'cohama/lexima.vim'
@@ -67,6 +87,9 @@ Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 " <- vim-plug 
 
+" Set Theme
+colorscheme tokyonight
+
 " :help completeopt
 set completeopt=menu,menuone,longest,noselect
 
@@ -87,10 +110,12 @@ lspconfig.ccls.setup {
     index = {
       threads = 0;
     };
+    filetypes = { "c", "cc", "cpp", "c++", "objc", "objcpp", "cppm", "c++m" };
     highlight = {
         lsRanges = true;
     };
     clang = {
+      extraArgs = { "-std=c++2a" } ; 
       excludeArgs = { "-frounding-math"} ;
     };
   }
@@ -100,6 +125,10 @@ require'lspconfig'.ccls.setup{}
 
 -- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 require'lspconfig'.ltex.setup{}
+-- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+
+-- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 require'lspconfig'.gopls.setup{
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod"},
@@ -113,14 +142,15 @@ require'lspconfig'.gopls.setup{
         },
     },
 }
+-- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 local opts = {
     tools = { -- rust-tools options
         autoSetHints = true,
         hover_with_actions = true,
         inlay_hints = {
+            type_hints = true, 
             show_parameter_hints = true,
             parameter_hints_prefix = "",
             other_hints_prefix = "",
