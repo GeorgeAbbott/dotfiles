@@ -6,68 +6,6 @@ mpd_port = 6600
 mpd_music_dir = /var/lib/mpd/music
 #mpd_crossfade_time = 5
 
-
-# [visualizer] 
-# visualizer_data_source = /tmp/mpd.fifo
-# visualizer_output_name = Visualizer feed
-# visualizer_in_stereo = yes
-#
-##
-## Note: set below to >=10 only if you have synchronization issues with
-## visualization and audio.
-##
-#
-#visualizer_sync_interval = 0
-#
-##
-## Note: To enable spectrum frequency visualization you need to compile ncmpcpp
-## with fftw3 support.
-##
-#
-## Available values: spectrum, wave, wave_filled, ellipse.
-##
-#visualizer_type = spectrum
-#
-# visualizer_fps = 60
-#
-#visualizer_autoscale = no
-#
-#visualizer_look = ●▮
-#
-#visualizer_color = blue, cyan, green, yellow, magenta, red
-#
-## Alternative subset of 256 colors for terminals that support it.
-##
-#visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
-#
-##
-## Note: The next few visualization options apply to the spectrum visualizer.
-##
-#
-## Use unicode block characters for a smoother, more continuous look.
-## This will override the visualizer_look option. With transparent terminals
-## and visualizer_in_stereo set, artifacts may be visible on the bottom half of
-## the visualization.
-#
-#visualizer_spectrum_smooth_look = yes
-#
-## A value between 1 and 5 inclusive. Specifying a larger value makes the
-## visualizer look at a larger slice of time, which results in less jumpy
-## visualizer output.
-#
-#visualizer_spectrum_dft_size = 2
-#
-#visualizer_spectrum_gain = 10
-#
-## Left-most frequency of visualizer in Hz, must be less than HZ MAX
-#
-#visualizer_spectrum_hz_min = 20
-#
-## Right-most frequency of visualizer in Hz, must be greater than HZ MIN
-#
-#visualizer_spectrum_hz_max = 20000
-#
-
 [delays]
 #
 ## Time of inactivity (in seconds) after playlist highlighting will be disabled
