@@ -45,12 +45,33 @@ Plug 'arcticicestudio/nord-vim'
 
 Plug 'ciaranm/inkpot'
 
+Plug 'nanotech/jellybeans.vim'
+let g:jellybeans_use_term_italics = 1
 
+Plug 'tomasr/molokai'
+let g:molokai_original = 0
+
+Plug 'jnurmine/Zenburn'
+
+Plug 'connorholyday/vim-snazzy'
+let g:SnazzyTransparent = 0
 
 " Easy alignment
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" Speeddating - <C-A> and <C-X> increment/decrement dates correctly. 
+Plug 'tpope/vim-speeddating'
+
+" Converting bases: gA shows representations and crd, crx, cro, crb convert
+" under cursor
+Plug 'glts/vim-magnum'     " Depedency of vim-radical
+Plug 'glts/vim-radical'
+
+" Repeat commands
+Plug 'tpope/vim-repeat'
+
 
 " Rainbow brackets for easy viewing
 Plug 'luochen1990/rainbow'
@@ -61,6 +82,42 @@ Plug 'cohama/lexima.vim'
 let g:lexima_enable_basic_rules = 1
 let g:lexima_enable_newline_rules = 1
 let g:enable_endwise_rules = 1
+
+" Modify surrounding brackets
+Plug 'tpope/vim-surround'
+
+" Tagbar
+Plug 'preservim/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+" Git 
+Plug 'tpope/vim-fugitive'
+
+
+Plug 'airblade/vim-gitgutter/'  " Display changes in sidebar to left
+
+" Lightline
+Plug 'itchyny/lightline.vim'
+
+let g:lightline = {
+            \ 'colorscheme': 'wombat',
+            \ 'active': { 
+                \ 'left':  [ [ 'mode', 'paste' ], 
+                    \        [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+                    \      ],
+                \ 'right': [ [ 'lineinfo' ],
+                    \        [ 'percent' ],
+                    \        [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ]
+                    \      ]
+                \ }, 
+            \ 'component': { 
+                \ 'charvaluehex': '0x%B'
+            \ },
+            \ 'component_function': {
+                \ 'gitbranch': 'FugitiveHead'
+            \ }
+            \ }
+
 
 
 " For Rust development
