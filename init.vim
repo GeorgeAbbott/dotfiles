@@ -83,12 +83,23 @@ let g:lexima_enable_basic_rules = 1
 let g:lexima_enable_newline_rules = 1
 let g:enable_endwise_rules = 1
 
+Plug 'alvan/vim-closetag'           " Close HTML tags
+
+
 " Modify surrounding brackets
 Plug 'tpope/vim-surround'
 
 " Tagbar
 Plug 'preservim/tagbar'
 nmap <F8> :TagbarToggle<CR>
+
+" NerdTree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'      " must be last?
+nmap <F7> :NERDTreeToggle<CR>
+
 
 " Git 
 Plug 'tpope/vim-fugitive'
