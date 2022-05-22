@@ -166,13 +166,15 @@ mpd_music_dir = /var/lib/mpd/music
 #
 #song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
 #
+
+
 [various]
-#execute_on_song_change = ""         # TODO: set for dwmblocks
-#execute_on_player_state_change = ""
+execute_on_song_change = "pkill -RTMIN+4 dwmblocks"   # TODO: set for dwmblocks
+execute_on_player_state_change = "pkill -RTMIN+4 dwmblocks"
 #playlist_show_mpd_host = no
-#playlist_show_remaining_time = no
+playlist_show_remaining_time = yes
 #playlist_shorten_total_times = no
-#playlist_separate_albums = no
+playlist_separate_albums = no
 ## Note: Possible display modes: classic, columns.
 playlist_display_mode = classic
 browser_display_mode = classic
@@ -182,7 +184,7 @@ playlist_editor_display_mode = classic
 #show_duplicate_tags = yes
 #incremental_seeking = yes
 #seek_time = 1
-#volume_change_step = 2
+volume_change_step = 4
 autocenter_mode = no
 #centered_cursor = no
 #progressbar_look = =>
@@ -368,37 +370,20 @@ mouse_support = no
 ## are used there is a possibility that you'll be able to use only colors with
 ## transparent background.
 #
-#colors_enabled = yes
-#
-#empty_tag_color = cyan
-#
-#header_window_color = default
-#
-#volume_color = default
-#
-#state_line_color = default
-#
-#state_flags_color = default:b
-#
-#main_window_color = yellow
-#
-#color1 = white
-#
-#color2 = green
-#
-#progressbar_color = black:b
-#
-#progressbar_elapsed_color = green:b
-#
-#statusbar_color = default
-#
-#statusbar_time_color = default:b
-#
-#player_state_color = default:b
-#
-#alternative_ui_separator_color = black:b
-#
-#window_border_color = green
-#
-#active_window_border = red
-#
+colors_enabled                 = yes
+empty_tag_color                = cyan
+header_window_color            = default
+volume_color                   = default
+state_line_color               = default
+state_flags_color              = default:b
+main_window_color              = green
+color1                         = white
+color2                         = green
+progressbar_color              = black:b
+progressbar_elapsed_color      = green:b
+statusbar_color                = default
+statusbar_time_color           = default:b
+player_state_color             = default:b
+alternative_ui_separator_color = black:b
+window_border_color            = green
+active_window_border           = red
