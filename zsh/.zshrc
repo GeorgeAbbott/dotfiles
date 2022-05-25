@@ -87,9 +87,9 @@ alias mpr="mpc prev"
 # backgrounds, wal...
 
 # todos...
-alias td="mn todos"
-alias tdcmp="mn todos-cmp"
-alias tdntd="mn todos-ntd"
+alias td="mn td/todos"
+alias tdcmp="mn td/todos-cmp"
+alias tdntd="mn td/todos-ntd"
 
 alias cld="mn cld/calendar" 
 alias cldcmp="mn cld/calendar-cmp"
