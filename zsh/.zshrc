@@ -91,8 +91,9 @@ alias td="mn todos"
 alias tdcmp="mn todos-cmp"
 alias tdntd="mn todos-ntd"
 
-alias cld="mn calendar" 
-alias cldcmp="mn calendar-cmp"
+alias cld="mn cld/calendar" 
+alias cldcmp="mn cld/calendar-cmp"
+alias cldrec="mn cld/calendar-recurring"
 
 # anime 
 alias awl="mnmed anime-watchlist"  # Anime I have seen
