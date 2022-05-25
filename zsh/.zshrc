@@ -96,28 +96,28 @@ alias cldcmp="mn cld/calendar-cmp"
 alias cldrec="mn cld/calendar-recurring"
 
 # anime 
-alias awl="mnmed anime-watchlist"  # Anime I have seen
-alias atw="mnmed anime-towatch"    # Anime I should watch 
-alias ac="mnmed anime-completed"   # Anime I have completed
-alias ad="mnmed anime-dropped"     # Anime I have dropped
+alias awl="mn med/anime-watchlist"  # Anime I have seen
+alias atw="mn med/anime-towatch"    # Anime I should watch 
+alias ac="mn med/anime-completed"   # Anime I have completed
+alias ad="mn med/anime-dropped"     # Anime I have dropped
 
 # TV
-alias tvwl="mnmed tv-watchlist"
-alias tvtw="mnmed tv-towatch"
-alias tvc="mnmed tv-completed"
-alias tvd="mnmed tv-dropped"
+alias tvwl="mn med/tv-watchlist"
+alias tvtw="mn med/tv-towatch"
+alias tvc="mn med/tv-completed"
+alias tvd="mn med/tv-dropped"
 
 # Manga
-alias mrl="mnmed manga-readlist"
-alias mtr="mnmed manga-toread"
-alias mc="mnmed manga-completed"
-alias md="mnmed manga-dropped"
+alias mrl="mn med/manga-readlist"
+alias mtr="mn med/manga-toread"
+alias mc="mn med/manga-completed"
+alias md="mn med/manga-dropped"
 
 # Book 
-alias brl="mnmed book-readlist"
-alias btr="mnmed book-toread"
-alias bc="mnmed book-completed"
-alias bd="mnmed book-dropped"
+alias brl="mn med/book-readlist"
+alias btr="mn med/book-toread"
+alias bc="mn med/book-completed"
+alias bd="mn med/book-dropped"
 
 
 # documents
@@ -201,9 +201,6 @@ yer() { # Year End Recap - TODO: see mer todos
 
 mn() { # make note
     nvim "$HOME/docs/wr/$1"
-}
-mnmed() { # make note in media directory
-    mn "med/$1"
 }
 
 autoload -Uz compinit
