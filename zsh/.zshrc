@@ -61,6 +61,11 @@ RPROMPT='%D{%k:%M:%S}'
 # allow sudo to make use of aliases
 alias sudo="sudo "
 
+# various temporary
+pvd() {
+    pmpv *$1*
+}
+
 # ls / exa 
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso --group"
