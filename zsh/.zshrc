@@ -155,12 +155,12 @@ alias gc="git commit"
 alias gcm="git commit -m"
 alias gf="git fetch"
 gar() { # Add remotes
-    git remote add origin gitea@git.gabbott.xyz:self/$1.git
+    git remote add origin gitea@git.gabbott.dev:self/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
     git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
 grr() { # Rename all remotes 
-    git remote set-url origin gitea@git.gabbott.xyz:self/$1.git
+    git remote set-url origin gitea@git.gabbott.dev:self/$1.git
     git remote set-url github git@github.com:GeorgeAbbott/$1.git
     git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
@@ -170,7 +170,7 @@ gpr() { # Print all remotes
     git remote get-url gitlab 
 }
 gcar() { # Git clone from origin url and then add in the rest of remotes
-    git clone gitea@git.gabbott.xyz:self/$1.git
+    git clone gitea@git.gabbott.dev:self/$1.git
     cd ./$1
     gar $1
     cd ..
