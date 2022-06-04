@@ -175,6 +175,9 @@ gcar() { # Git clone from origin url and then add in the rest of remotes
     gar $1
     cd ..
 }
+gua() { # Update all - recursively iterates through dir and runs git pull 
+    # TODO implement
+}
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
