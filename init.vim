@@ -183,7 +183,7 @@ lspconfig.ccls.setup {
         lsRanges = true;
     };
     clang = {
-      extraArgs = { "-std=c++2a" } ; 
+      extraArgs = { "-std=c++20" } ; 
       excludeArgs = { "-frounding-math"} ;
     };
   }
