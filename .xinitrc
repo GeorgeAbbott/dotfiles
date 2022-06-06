@@ -2,6 +2,7 @@
 
 # General Configurations
 setxkbmap gb						# Set keyboard to gb layout
+setxkbmap -option caps:swapescape
 export SHELL=/bin/zsh					# Set shell to zsh
 # wmname LG3D &						# For getting Java applications, e.g. Pycharm, Rider to work.
 
