@@ -35,6 +35,7 @@ autoload -U promptinit && promptinit
 alias feh="feh --no-fehbg"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
+wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"
 # TODO: add all XDG directories in the right places, and then run the commands
 # as per the SO post: https://stackoverflow.com/questions/26198926/why-does-lesshst-keep-showing-up-in-my
 # to get rid of .lesshst file and where man creates it as well
