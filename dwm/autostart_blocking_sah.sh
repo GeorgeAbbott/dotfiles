@@ -2,7 +2,8 @@
 
 feh --bg-scale $(shuf -n1 -e ~/bgs/*)
 dwmblocks &
-st &
+alacritty &
+setxkbmap -option caps:swapescape
 
 # Notifications
 dunst & 
