@@ -111,7 +111,6 @@ alias cldrec="mn cld/calendar-recurring"
 # anime 
 alias awl="mn med/anime-watchlist"  # Anime I have seen
 alias atw="mn med/anime-towatch"    # Anime I should watch 
-alias ac="mn med/anime-completed"   # Anime I have completed
 alias ad="mn med/anime-dropped"     # Anime I have dropped
 
 # TV
