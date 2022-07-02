@@ -205,13 +205,13 @@ holc () { # Holiday Entry
 mer() { # Month End Recap - TODO: get this to work just with e.g. mer 2022-01
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
     mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT) - Month End Recap.txt" 
+    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT)-month-end-recap.txt" 
 }
 
 yer() { # Year End Recap - TODO: see mer todos
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
     mkdir -p "$HOME/docs/daily-log/$(date %Y -d $DT)-12"
-    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT) - Year End Recap.txt"
+    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT)-year-end-recap.txt"
 }
 
 mn() { # make note
