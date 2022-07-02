@@ -12,7 +12,7 @@ set autoindent              " indent a new line the same amount as the line just
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
 set cc=80                   " set an 80 column border for good coding style
-" highlight ColorColumn ctermbg=darkcyan
+highlight ColorColumn ctermbg=darkcyan
 filetype plugin indent on   "allow auto-indenting depending on file type
 syntax on                   " syntax highlighting
 set mouse=a                 " enable mouse click
@@ -176,7 +176,7 @@ call plug#end()
 
 " Set Theme
 " colorscheme tokyonight  " tempus themes don't work without something better before?
-colorscheme tempus_warp 
+" colorscheme tempus_warp 
 
 " numb 
 :lua require('numb').setup()
