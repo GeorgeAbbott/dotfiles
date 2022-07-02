@@ -108,20 +108,34 @@
   #multiplier: 3
 
 # Font configuration
-font: 
+# font: 
+#  normal:
+#    family: "CodeNewRoman Nerd Font Mono"
+#    style: Book
+#  bold:
+#    family: "CodeNewRoman Nerd Font Mono"
+#    style: Bold 
+#  italic: 
+#    family: "CodeNewRoman Nerd Font Mono"
+#    style: Italic 
+#  size: 7.0
+
+font:
   normal:
-    family: "CodeNewRoman Nerd Font Mono"
-    style: Book
+    family: "MonacoB Nerd Font Mono"
+    style: Regular
   bold:
-    family: "CodeNewRoman Nerd Font Mono"
-    style: Bold 
+    family: "MonacoB Nerd Font Mono"
+    style: Bold
   italic: 
-    family: "CodeNewRoman Nerd Font Mono"
-    style: Italic 
-  size: 7.0
+    family: "MonacoB Nerd Font Mono"
+    style: Regular
+  size: 8.0
+
+
 
 import: 
-  - ~/.config/alacritty/tempus-themes-alacritty/tempus_future.yml
+  - ~/.config/alacritty/alacritty-theme/themes/campbell.yaml
 
 
   #cursor:
