@@ -29,7 +29,8 @@ call plug#begin('~/.config/nvim/plugged')
 " Nvim LSP client
 Plug 'neovim/nvim-lspconfig'
 
-" Themes
+"""""""""""
+" Themes ->
 Plug 'folke/tokyonight.nvim'
 let g:tokyonight_style = 'night' " night; storm; day 
 let g:tokyonight_enable_italic = 1 
@@ -53,8 +54,22 @@ let g:molokai_original = 0
 
 Plug 'jnurmine/Zenburn'
 
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
+
+Plug 'https://git.sr.ht/%7Eswalladge/paper.vim'
+
 Plug 'connorholyday/vim-snazzy'
 let g:SnazzyTransparent = 0
+
+" <- end themes
+"""""""""""""""
+
+" loupe - improves searching with /, ?, #, *, i.e. highlighting + <Leader>n to 
+" clear highlighting 
+Plug 'https://github.com/wincent/loupe'
+
+" Peek at location when entering :N
+Plug 'nacro90/numb.nvim'
 
 " Easy alignment
 Plug 'junegunn/vim-easy-align'
@@ -140,6 +155,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'simrat39/rust-tools.nvim' 
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'folke/todo-comments.nvim'
+
 " For C++ development
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
@@ -156,7 +175,20 @@ call plug#end()
 " <- vim-plug 
 
 " Set Theme
-colorscheme tokyonight
+" colorscheme tokyonight  " tempus themes don't work without something better before?
+" colorscheme tempus_warp 
+
+" numb 
+:lua require('numb').setup()
+
+" todo-comments
+lua << EOF
+  require("todo-comments").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
 
 " :help completeopt
 set completeopt=menu,menuone,longest,noselect
@@ -196,7 +228,7 @@ require'lspconfig'.ltex.setup{}
 -- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 
--- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- BEGIN -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 require'lspconfig'.gopls.setup{
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod"},
@@ -210,41 +242,42 @@ require'lspconfig'.gopls.setup{
         },
     },
 }
--- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+-- END   -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            type_hints = true, 
-            show_parameter_hints = true,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
+-- local opts = {
+--     tools = { -- rust-tools options
+--         autoSetHints = true,
+--         hover_with_actions = true,
+--         inlay_hints = {
+--             type_hints = true, 
+--             chaining_hints = true,
+--             show_parameter_hints = true,
+--             parameter_hints_prefix = "",
+--             other_hints_prefix = "",
+--         },
+--     },
+-- 
+--     -- all the opts to send to nvim-lspconfig
+--     -- these override the defaults set by rust-tools.nvim
+--     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
+--     server = {
+--         -- on_attach is a callback called when the language server attachs to the buffer
+--         -- on_attach = on_attach,
+--         settings = {
+--             -- to enable rust-analyzer settings visit:
+--             -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+--             ["rust-analyzer"] = {
+--                 -- enable clippy on save
+--                 checkOnSave = {
+--                     command = "clippy"
+--                 },
+--             }
+--         }
+--     },
+-- }
 
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
+require('rust-tools').setup({})
 EOF
 
 " Setup Completion

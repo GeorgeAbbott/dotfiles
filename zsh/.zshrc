@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # History
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1001
@@ -28,6 +35,7 @@ autoload -U promptinit && promptinit
 alias feh="feh --no-fehbg"
 alias newsboat="newsboat -u ~/.config/newsboat/urls"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 # TODO: add all XDG directories in the right places, and then run the commands
 # as per the SO post: https://stackoverflow.com/questions/26198926/why-does-lesshst-keep-showing-up-in-my
 # to get rid of .lesshst file and where man creates it as well
@@ -103,7 +111,6 @@ alias cldrec="mn cld/calendar-recurring"
 # anime 
 alias awl="mn med/anime-watchlist"  # Anime I have seen
 alias atw="mn med/anime-towatch"    # Anime I should watch 
-alias ac="mn med/anime-completed"   # Anime I have completed
 alias ad="mn med/anime-dropped"     # Anime I have dropped
 
 # TV
@@ -198,13 +205,13 @@ holc () { # Holiday Entry
 mer() { # Month End Recap - TODO: get this to work just with e.g. mer 2022-01
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
     mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT) - Month End Recap.txt" 
+    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT)-month-end-recap.txt" 
 }
 
 yer() { # Year End Recap - TODO: see mer todos
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
     mkdir -p "$HOME/docs/daily-log/$(date %Y -d $DT)-12"
-    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT) - Year End Recap.txt"
+    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT)-year-end-recap.txt"
 }
 
 mn() { # make note
@@ -222,3 +229,7 @@ eval "$(zoxide init zsh)"
 # Sourcing for zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

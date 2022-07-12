@@ -4,6 +4,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
+# Programs for tasks
+export PAGER="bat"
+
 # Path Directories
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
@@ -26,6 +29,7 @@ export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 
 # ZSH Directories

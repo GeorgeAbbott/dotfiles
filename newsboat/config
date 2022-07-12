@@ -11,3 +11,11 @@ highlight feedlist " " default default invis
 color listfocus yellow default standout underline bold 
 color listfocus_unread yellow default standout underline bold 
 
+bind-key G end 
+bind-key g home
+bind-key j down
+bind-key k up
+bind-key - quit
+text-width 74 
+cleanup-on-quit yes
+
