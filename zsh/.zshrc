@@ -152,7 +152,7 @@ sv() {
 alias gb="git branch"
 alias gco="git checkout" 
 alias gcom="git checkout master"
-alias gdb="git branch -d"
+alias gbd="git branch -d"
 alias gp="git push"
 alias gpa="gp origin && gp github && gp gitlab"
 alias gpl="git pull" 
