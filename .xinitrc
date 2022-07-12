@@ -7,7 +7,7 @@ export SHELL=/bin/zsh					# Set shell to zsh
 # wmname LG3D &						# For getting Java applications, e.g. Pycharm, Rider to work.
 
 # Launch the Window Manager with a Parameter
-session=${1:-dwm}
+session=${1:-ferrwm}
 
 run_dwm() {
     # Run all applications that go hand in hand w/ dwm
@@ -19,8 +19,12 @@ run_dwm() {
 
 }
 
+run_ferrwm() {
+    RUST_LOG=trace && ferrwm
+}
+
 case $session in
-    i3|i3wm           ) exec i3;;
+    ferrwm            ) run_ferrwm ;;
     dwm               ) run_dwm ;;
     # No known session, try to run it as command
 esac
