@@ -1,0 +1,4 @@
+#!/bin/sh
+
+startx $HOME/git/dotfiles/xinit/plasma-xinitrc
+
