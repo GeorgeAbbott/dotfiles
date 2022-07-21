@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# General Configurations
+setxkbmap gb 
+setxkbmap -option caps:swapescape
+export SHELL=/bin/zsh
+
+while true 
+do
+    dwm
+done

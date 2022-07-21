@@ -1,0 +1,7 @@
+#!/bin/sh
+
+setxkbmap gb 
+setxkbmap -option caps:swapescape 
+export SHELL=/bin/zsh 
+
+RUST_LOG=trace && ferrwm
