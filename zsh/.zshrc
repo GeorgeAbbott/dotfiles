@@ -66,6 +66,40 @@ PROMPT='%9c$(git_branch_test_color)%F{none} %# '
 RPROMPT='%D{%k:%M:%S}'
 
 ########## Aliases / Functions ##########
+# Allows declaring abbreviations:
+# declare a list of expandable aliases to fill up later
+typeset -a ealiases
+ealiases=()
+
+# write a function for adding an alias to the list mentioned above
+function abbrev-alias() {
+    alias $1
+    ealiases+=(${1%%\=*})
+}
+
+# expand any aliases in the current line buffer
+function expand-ealias() {
+    if [[ $LBUFFER =~ "\<(${(j:|:)ealiases})\$" ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle magic-space
+}
+zle -N expand-ealias
+
+# Bind the space key to the expand-alias function above, so that space will expand any expandable aliases
+bindkey ' '        expand-ealias
+bindkey '^ '       magic-space     # control-space to bypass completion
+bindkey -M isearch " "      magic-space     # normal space during searches
+
+# A function for expanding any aliases before accepting the line as is and executing the entered command
+expand-alias-and-accept-line() {
+    expand-ealias
+    zle .backward-delete-char
+    zle .accept-line
+}
+zle -N accept-line expand-alias-and-accept-line
+#
 # allow sudo to make use of aliases
 alias sudo="sudo "
 
@@ -75,6 +109,11 @@ pvd() {
 }
 
 # ls / exa 
+
+abbrev-alias m="ncmpcpp"
+abbrev-alias mnx="mpc next"
+abbrev-alias mtg="mpc toggle"
+
 alias ls='ls -a --color=always'
 alias e="exa -a --header --long --git --time-style=long-iso --group"
 alias ev="exa --header --long --git --time-style=long-iso --group" # Exa View
@@ -83,30 +122,30 @@ alias cv="clear ; ev" # Clear + Exa View
 alias t="e --tree"
 
 # vim / nvim
-alias v="vim"
-alias n="nvim"
+abbrev-alias v="vim"
+abbrev-alias n="nvim"
 
 # music: mpd, ncmpcpp, mpc
-alias m="ncmpcpp"
+abbrev-alias m="ncmpcpp"
 
-alias mps="mpc pause"
-alias mpl="mpc play"
-alias mst="mpc stop"
-alias mtg="mpc toggle"
-
-alias mnx="mpc next"
-alias mpr="mpc prev"
+abbrev-alias mps="mpc pause"
+abbrev-alias mpl="mpc play"
+abbrev-alias mst="mpc stop"
+abbrev-alias mtg="mpc toggle"
+abbrev-alias mnx="mpc next"
+abbrev-alias mpr="mpc prev"
 
 # backgrounds, wal...
+abbrev-alias tbg="feh --bg-fill $(shuf -n1 -e ~/bgs/*)"
 
 # todos...
-alias td="mn td/todos"
-alias tdcmp="mn td/todos-cmp"
-alias tdntd="mn td/todos-ntd"
+abbrev-alias td="mn td/todos"
+abbrev-alias tdcmp="mn td/todos-cmp"
+abbrev-alias tdntd="mn td/todos-ntd"
 
-alias cld="mn cld/calendar" 
-alias cldcmp="mn cld/calendar-cmp"
-alias cldrec="mn cld/calendar-recurring"
+abbrev-alias cld="mn cld/calendar" 
+abbrev-alias cldcmp="mn cld/calendar-cmp"
+abbrev-alias cldrec="mn cld/calendar-recurring"
 
 # anime 
 alias awl="mn med/anime-watchlist"  # Anime I have seen
@@ -133,9 +172,9 @@ alias bd="mn med/book-dropped"
 
 
 # documents
-alias p="zathura" 
-alias o="libreoffice --writer" 
-alias b="bat"
+abbrev-alias p="zathura" 
+abbrev-alias o="libreoffice --writer" 
+abbrev-alias b="bat"
 
 # file manipulation
 defix() {
@@ -149,18 +188,18 @@ sv() {
 
 # git
 # TODO: add command to push to all remote repos, e.g. github, origin and gitlab
-alias gb="git branch"
-alias gco="git checkout" 
-alias gcom="git checkout master"
-alias gbd="git branch -d"
-alias gp="git push"
-alias gpa="gp origin && gp github && gp gitlab"
-alias gpl="git pull" 
-alias gs="git status"
-alias ga="git add"
-alias gc="git commit"
-alias gcm="git commit -m"
-alias gf="git fetch"
+abbrev-alias gb="git branch"
+abbrev-alias gco="git checkout" 
+abbrev-alias gcom="git checkout master"
+abbrev-alias gbd="git branch -d"
+abbrev-alias gp="git push"
+abbrev-alias gpa="gp origin && gp github && gp gitlab"
+abbrev-alias gpl="git pull" 
+abbrev-alias gs="git status"
+abbrev-alias ga="git add"
+abbrev-alias gc="git commit"
+abbrev-alias gcm="git commit -m"
+abbrev-alias gf="git fetch"
 gar() { # Add remotes
     git remote add origin gitea@git.gabbott.dev:self/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
