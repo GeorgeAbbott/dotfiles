@@ -147,29 +147,8 @@ abbrev-alias cld="mn cld/calendar"
 abbrev-alias cldcmp="mn cld/calendar-cmp"
 abbrev-alias cldrec="mn cld/calendar-recurring"
 
-# anime 
-alias awl="mn med/anime-watchlist"  # Anime I have seen
-alias atw="mn med/anime-towatch"    # Anime I should watch 
-alias ad="mn med/anime-dropped"     # Anime I have dropped
-
-# TV
-alias tvwl="mn med/tv-watchlist"
-alias tvtw="mn med/tv-towatch"
-alias tvc="mn med/tv-completed"
-alias tvd="mn med/tv-dropped"
-
-# Manga
-alias mrl="mn med/manga-readlist"
-alias mtr="mn med/manga-toread"
-alias mc="mn med/manga-completed"
-alias md="mn med/manga-dropped"
-
-# Book 
-alias brl="mn med/book-readlist"
-alias btr="mn med/book-toread"
-alias bc="mn med/book-completed"
-alias bd="mn med/book-dropped"
-
+# media (temporary, whilst med being made)
+# TBA
 
 # documents
 abbrev-alias p="zathura" 
