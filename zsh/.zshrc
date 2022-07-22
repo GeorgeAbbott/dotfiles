@@ -132,6 +132,10 @@ abbrev-alias mpr="mpc prev"
 # backgrounds, wal...
 abbrev-alias tbg="feh --bg-fill $(shuf -n1 -e ~/bgs/*)"
 
+# cargo 
+abbrev-alias cb="cargo build"
+abbrev-alias cbr="cargo build --release"
+
 # todos...
 abbrev-alias td="mn td/todos"
 abbrev-alias tdcmp="mn td/todos-cmp"
