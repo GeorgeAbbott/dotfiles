@@ -109,17 +109,11 @@ pvd() {
 }
 
 # ls / exa 
-
-abbrev-alias m="ncmpcpp"
-abbrev-alias mnx="mpc next"
-abbrev-alias mtg="mpc toggle"
-
 alias ls='ls -a --color=always'
-alias e="exa -a --header --long --git --time-style=long-iso --group"
-alias ev="exa --header --long --git --time-style=long-iso --group" # Exa View
-alias c="clear ; e"
-alias cv="clear ; ev" # Clear + Exa View
-alias t="e --tree"
+alias exa="exa -a --header --long --git --time-style=long-iso --group"
+abbrev-alias e="exa"
+abbrev-alias c="clear; exa"
+abbrev-alias t="exa --tree"
 
 # vim / nvim
 abbrev-alias v="vim"
@@ -179,30 +173,36 @@ abbrev-alias ga="git add"
 abbrev-alias gc="git commit"
 abbrev-alias gcm="git commit -m"
 abbrev-alias gf="git fetch"
-gar() { # Add remotes
+git-add-remotes() { # Add remotes
     git remote add origin gitea@git.gabbott.dev:self/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
     git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
-grr() { # Rename all remotes 
+git-rename-remotes() { # Rename all remotes 
     git remote set-url origin gitea@git.gabbott.dev:self/$1.git
     git remote set-url github git@github.com:GeorgeAbbott/$1.git
     git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
-gpr() { # Print all remotes
+git-print-remotes() { # Print all remotes
     git remote get-url origin 
     git remote get-url github 
     git remote get-url gitlab 
 }
-gcar() { # Git clone from origin url and then add in the rest of remotes
+git-clone-add-remotes() { # Git clone from origin url and then add in the rest of remotes
     git clone gitea@git.gabbott.dev:self/$1.git
     cd ./$1
     gar $1
     cd ..
 }
-gua() { # Update all - recursively iterates through dir and runs git pull 
+git-update-all() { # Update all - recursively iterates through dir and runs git pull 
     # TODO implement
 }
+abbrev-alias gar="git-add-remotes"
+abbrev-alias grr="git-rename-remotes"
+abbrev-alias gpr="git-print-remotes"
+abbrev-alias gcr="git-clone-add-remotes"
+
+
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
