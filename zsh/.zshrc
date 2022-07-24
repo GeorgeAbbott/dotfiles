@@ -178,6 +178,7 @@ abbrev-alias ga="git add"
 abbrev-alias gc="git commit"
 abbrev-alias gcm="git commit -m"
 abbrev-alias gf="git fetch"
+abbrev-alias gcl="git clone"
 git-add-remotes() { # Add remotes
     git remote add origin gitea@git.gabbott.dev:self/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
