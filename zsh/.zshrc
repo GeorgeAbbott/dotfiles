@@ -66,6 +66,14 @@ setopt PROMPT_SUBST
 PROMPT='%9c$(git_branch_test_color)%F{none} %# '
 RPROMPT='%D{%k:%M:%S}'
 
+########## Configuration #############
+if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
+  git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh/zsh-autopair
+fi
+
+source ~/.config/zsh/zsh-autopair/autopair.zsh
+autopair-init
+
 ########## Aliases / Functions ##########
 # Allows declaring abbreviations:
 # declare a list of expandable aliases to fill up later
