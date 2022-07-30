@@ -250,6 +250,14 @@ mn() { # make note
     nvim "$HOME/docs/wr/$1"
 }
 
+mkdream() { # make dream record
+    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi 
+    mkdir -p "$HOME/docs/wr/dream"
+    nvim "$HOME/docs/wr/dream/D$(date --iso-8601 -d $DT).txt"
+}
+
+
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
