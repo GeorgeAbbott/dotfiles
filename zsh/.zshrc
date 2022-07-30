@@ -139,7 +139,7 @@ abbrev-alias mnx="mpc next"
 abbrev-alias mpr="mpc prev"
 
 # backgrounds, wal...
-abbrev-alias rbg="feh --bg-fill $(shuf -n1 -e ~/bgs/*)"
+alias rbg="feh --bg-fill $(shuf -n1 -e ~/bgs/*)"
 
 # cargo 
 abbrev-alias cb="cargo build"
