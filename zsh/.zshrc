@@ -222,40 +222,39 @@ abbrev-alias gcr="git-clone-add-remotes"
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias r="prime-run newsboat"
 
-lle() { # Life Log Entry
+lle() { # Life Log Entry: L~
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
-    mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
+    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
+    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
 }
 
-holc () { # Holiday Entry 
+holc () { # Holiday Entry: H~
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
-    mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
+    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
+    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
 }
 
-mer() { # Month End Recap - TODO: get this to work just with e.g. mer 2022-01
+mer() { # Month End Recap: M~
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
-    mkdir -p "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/daily-log/$(date +%Y-%m -d $DT)/L$(date +%Y-%m -d $DT)-month-end-recap.txt" 
+    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
+    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/M$(date +%Y-%m -d $DT).txt" 
 }
 
-yer() { # Year End Recap - TODO: see mer todos
+yer() { # Year End Recap: Y~
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
-    mkdir -p "$HOME/docs/daily-log/$(date %Y -d $DT)-12"
-    nvim "$HOME/docs/daily-log/$(date +%Y -d $DT)-12/$(date +%Y -d $DT)-year-end-recap.txt"
+    mkdir -p "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12"
+    nvim "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12/Y$(date +%Y -d $DT).txt"
 }
 
-mn() { # make note
-    nvim "$HOME/docs/wr/$1"
-}
-
-mkdream() { # make dream record
+mkdream() { # Dream Record: D~
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi 
     mkdir -p "$HOME/docs/wr/dream"
     nvim "$HOME/docs/wr/dream/D$(date --iso-8601 -d $DT).txt"
 }
 
+mn() { # make note
+    nvim "$HOME/docs/wr/$1"
+}
 
 
 autoload -Uz compinit
