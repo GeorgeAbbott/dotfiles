@@ -188,12 +188,12 @@ abbrev-alias gcm="git commit -m"
 abbrev-alias gf="git fetch"
 abbrev-alias gcl="git clone"
 git-add-remotes() { # Add remotes
-    git remote add origin gitea@git.gabbott.dev:self/$1.git
+    git remote add origin gitea@git.gabbott.dev:george/$1.git
     git remote add github git@github.com:GeorgeAbbott/$1.git
     git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
 git-rename-remotes() { # Rename all remotes 
-    git remote set-url origin gitea@git.gabbott.dev:self/$1.git
+    git remote set-url origin gitea@git.gabbott.dev:george/$1.git
     git remote set-url github git@github.com:GeorgeAbbott/$1.git
     git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
 }
@@ -203,7 +203,7 @@ git-print-remotes() { # Print all remotes
     git remote get-url gitlab 
 }
 git-clone-add-remotes() { # Git clone from origin url and then add in the rest of remotes
-    git clone gitea@git.gabbott.dev:self/$1.git
+    git clone gitea@git.gabbott.dev:george/$1.git
     cd ./$1
     gar $1
     cd ..
