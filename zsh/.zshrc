@@ -34,34 +34,6 @@ alias mpv="prime-run mpv"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
-# TODO: add all XDG directories in the right places, and then run the commands
-# as per the SO post: https://stackoverflow.com/questions/26198926/why-does-lesshst-keep-showing-up-in-my
-# to get rid of .lesshst file and where man creates it as well
-
-# alias less='less --lesskey-file=$XDG_CONFIG_HOME/lesskey'
-# alias man='man --pager="less --lesskey-file=$XDG_CONFIG_HOME/lesskey"'
-
-# Changing Default Prompt
-# PS1='[%F{#ff0000}%n%f %F{#6a0dad}%1d%f] '
-# PS1='[%F{#1111ee}%1d%f] => '
-# PS1="%? | [%F{#ff0000}%n%f] [$(vcs_info_wrapper)] %2~ %# "
-# Creates a git prompt
-git_branch_test_color() {
-  local ref=$(git symbolic-ref --short HEAD 2> /dev/null)
-  if [ -n "${ref}" ]; then
-    if [ -n "$(git status --porcelain)" ]; then
-      local gitstatuscolor='%F{red}'
-    else
-      local gitstatuscolor='%F{green}'
-    fi
-    echo "${gitstatuscolor} (${ref})"
-  else
-    echo ""
-  fi
-}
-setopt PROMPT_SUBST
-PROMPT='%9c$(git_branch_test_color)%F{none} %# '
-RPROMPT='%D{%k:%M:%S}'
 
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
@@ -118,7 +90,7 @@ pvd() {
 alias ls='ls -a --color=always'
 alias exa="exa -a --header --long --git --time-style=long-iso --group"
 abbrev-alias e="exa"
-abbrev-alias c="clear; exa"
+abbrev-alias xc="clear; exa"
 abbrev-alias c="clear"
 abbrev-alias t="exa --tree"
 
@@ -151,9 +123,6 @@ abbrev-alias tdntd="mn td/todos-ntd"
 abbrev-alias cld="mn cld/calendar" 
 abbrev-alias cldcmp="mn cld/calendar-cmp"
 abbrev-alias cldrec="mn cld/calendar-recurring"
-
-# media (temporary, whilst med being made)
-# TBA
 
 # other 
 abbrev-alias r="newsboat"
