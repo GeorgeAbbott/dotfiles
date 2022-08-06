@@ -23,17 +23,14 @@ unsetopt beep
 bindkey -v
 zstyle :compinstall filename "$HOME/.zshrc"
 
-# Configuring applications to use nvidia GPU
-alias pmpv="prime-run mpv"
-
-
 # Other general user config
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
 ########## Reducing clutter in home directory ##########
 alias feh="feh --no-fehbg"
-alias newsboat="newsboat -u ~/.config/newsboat/urls"
+alias newsboat="prime-run newsboat -u ~/.config/newsboat/urls"
+alias mpv="prime-run mpv"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
@@ -114,7 +111,7 @@ alias sudo="sudo "
 
 # various temporary
 pvd() {
-    pmpv *$1*
+    mpv *$1*
 }
 
 # ls / exa 
@@ -122,6 +119,7 @@ alias ls='ls -a --color=always'
 alias exa="exa -a --header --long --git --time-style=long-iso --group"
 abbrev-alias e="exa"
 abbrev-alias c="clear; exa"
+abbrev-alias c="clear"
 abbrev-alias t="exa --tree"
 
 # vim / nvim
@@ -139,7 +137,7 @@ abbrev-alias mnx="mpc next"
 abbrev-alias mpr="mpc prev"
 
 # backgrounds, wal...
-alias rbg="feh --bg-fill $(shuf -n1 -e ~/bgs/*)"
+alias rbg="feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)"
 
 # cargo 
 abbrev-alias cb="cargo build"
@@ -156,6 +154,9 @@ abbrev-alias cldrec="mn cld/calendar-recurring"
 
 # media (temporary, whilst med being made)
 # TBA
+
+# other 
+abbrev-alias r="newsboat"
 
 # documents
 abbrev-alias p="zathura" 
@@ -220,7 +221,6 @@ abbrev-alias gcr="git-clone-add-remotes"
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-alias r="prime-run newsboat"
 
 lle() { # Life Log Entry: L~
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
