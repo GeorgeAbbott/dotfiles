@@ -1,0 +1,4 @@
+#!/bin/sh 
+
+sudo protonvpn c --p2p
+pkill -RTMIN+7 dwmblocks
