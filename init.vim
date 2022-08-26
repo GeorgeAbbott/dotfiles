@@ -189,7 +189,7 @@ call plug#end()
 " <- vim-plug 
 
 " Set Theme 
-if strftime("%H") < 17
+if strftime("%H") >= 6 && strftime("%H") < 18
     set background=light
     colorscheme tempus_totus
 else 
