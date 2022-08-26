@@ -20,7 +20,7 @@ set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set ttyfast                 " Speed up scrolling in Vim
 set cursorline
-set background=dark
+set termguicolors           " Themes don't seem to work without this. 
 " set backupdir=~/.cache/vim " Directory to store backup files.
     
 " vim-plug -> 
@@ -60,6 +60,20 @@ Plug 'https://git.sr.ht/%7Eswalladge/paper.vim'
 
 Plug 'connorholyday/vim-snazzy'
 let g:SnazzyTransparent = 0
+
+Plug 'https://github.com/altercation/vim-colors-solarized'
+
+Plug 'https://github.com/katawful/kat.nvim'
+
+Plug 'https://github.com/humanoid-colors/vim-humanoid-colorscheme'
+
+Plug 'https://github.com/Rigellute/shades-of-purple.vim'
+
+Plug 'https://github.com/acetylen/boring.nvim'
+
+Plug 'https://github.com/rktjmp/lush.nvim'
+Plug 'https://github.com/mcchrish/zenbones.nvim'
+
 
 " <- end themes
 """""""""""""""
@@ -174,9 +188,14 @@ Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 " <- vim-plug 
 
-" Set Theme
-" colorscheme tokyonight  " tempus themes don't work without something better before?
-" colorscheme tempus_warp 
+" Set Theme 
+if strftime("%H") < 17
+    set background=light
+    colorscheme tempus_totus
+else 
+    set background=dark 
+    colorscheme tempus_night
+endif
 
 " numb 
 :lua require('numb').setup()
