@@ -154,8 +154,7 @@ let g:lightline = {
                 \ 'charvaluehex': '0x%B'
             \ },
             \ 'component_function': {
-                \ 'gitbranch': 'FugitiveHead',
-                \ 'filepath': 'LightlineFilepath'
+                \ 'gitbranch': 'FugitiveHead'
             \ }
             \ }
 
