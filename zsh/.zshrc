@@ -222,7 +222,7 @@ mkdream() { # Dream Record: D~
 }
 
 mn() { # make note
-    nvim "$HOME/docs/wr/$1"
+    nvim "$HOME/docs/wr/mn/$1"
 }
 
 

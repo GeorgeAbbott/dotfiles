@@ -41,9 +41,11 @@ font:
 
 
 window:
-  opacity: 0.80
+  opacity: 0.85
 import: 
-  - ~/.config/alacritty/alacritty-theme/themes/tender.yaml
+  # Nice Themes: 
+  # # thelovelace
+  - ~/.config/alacritty/alacritty-theme/themes/horizon-dark.yaml
 
 
 

@@ -143,7 +143,7 @@ let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ 'active': { 
                 \ 'left':  [ [ 'mode', 'paste' ], 
-                    \        [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+                    \        [ 'gitbranch', 'readonly', 'filename', 'modified', 'absolutepath' ]
                     \      ],
                 \ 'right': [ [ 'lineinfo' ],
                     \        [ 'percent' ],
@@ -154,11 +154,10 @@ let g:lightline = {
                 \ 'charvaluehex': '0x%B'
             \ },
             \ 'component_function': {
-                \ 'gitbranch': 'FugitiveHead'
+                \ 'gitbranch': 'FugitiveHead',
+                \ 'filepath': 'LightlineFilepath'
             \ }
             \ }
-
-
 
 " For Rust development
 Plug 'hrsh7th/nvim-cmp'         " Completion framework
