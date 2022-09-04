@@ -35,6 +35,9 @@ alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
 
+################################## orgd #######################################
+export ORGD_TD_PATH="$HOME/docs/wr/td"
+
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
   git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh/zsh-autopair
@@ -115,14 +118,14 @@ alias rbg="feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)"
 abbrev-alias cb="cargo build"
 abbrev-alias cbr="cargo build --release"
 
-# todos...
-abbrev-alias td="mn td/todos"
-abbrev-alias tdcmp="mn td/todos-cmp"
-abbrev-alias tdntd="mn td/todos-ntd"
+# todos... (changed to a~ so it doesn't clash with orgd binaries)
+abbrev-alias atd="mkwr td/todos"
+abbrev-alias atdcmp="mkwr td/todos-cmp"
+abbrev-alias atdntd="mkwr td/todos-ntd"
 
-abbrev-alias cld="mn cld/calendar" 
-abbrev-alias cldcmp="mn cld/calendar-cmp"
-abbrev-alias cldrec="mn cld/calendar-recurring"
+abbrev-alias cld="mkwr cld/calendar" 
+abbrev-alias cldcmp="mkwr cld/calendar-cmp"
+abbrev-alias cldrec="mkwr cld/calendar-recurring"
 
 # other 
 abbrev-alias r="newsboat"
@@ -222,7 +225,15 @@ mkdream() { # Dream Record: D~
 }
 
 mn() { # make note
-    nvim "$HOME/docs/wr/mn/$1"
+    mkwr "mn/$1"
+}
+
+mkkic() { # make keep-in-case: for various largely useless notes kept "just in case"
+    mkwr "kic/$1"
+}
+
+mkwr() { # make written
+    nvim "$HOME/docs/wr/$1"
 }
 
 
