@@ -6,6 +6,10 @@ setxkbmap -option caps:swapescape
 export SHELL=/bin/zsh					# Set shell to zsh
 # wmname LG3D &						# For getting Java applications, e.g. Pycharm, Rider to work.
 
+# Deal with screen saver
+xset s off
+xset -dpms
+
 # Launch the Window Manager with a Parameter
 session=${1:-wmdwm}
 
