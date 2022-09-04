@@ -6,6 +6,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # Programs for tasks
 export PAGER="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Path Directories
 export PATH="$PATH:$HOME/.local/bin"
@@ -30,6 +31,7 @@ export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 
 # ZSH Directories
