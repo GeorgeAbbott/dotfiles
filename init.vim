@@ -22,6 +22,12 @@ set ttyfast                 " Speed up scrolling in Vim
 set cursorline
 set termguicolors           " Themes don't seem to work without this. 
 " set backupdir=~/.cache/vim " Directory to store backup files.
+
+" Some aliases to make my life easier 
+command W w 
+command Wq wq 
+
+
     
 " vim-plug -> 
 call plug#begin('~/.config/nvim/plugged')
@@ -189,10 +195,10 @@ call plug#end()
 " Set Theme 
 if strftime("%H") >= 6 && strftime("%H") < 18
     set background=light
-    colorscheme tempus_totus
+    colorscheme kat.nwim
 else 
     set background=dark 
-    colorscheme tempus_night
+    colorscheme kat.nwim
 endif
 
 " numb 
@@ -247,6 +253,7 @@ require'lspconfig'.hls.setup{}
 
 -- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 require'lspconfig'.ltex.setup{}
+require'lspconfig'.ols.setup{}
 -- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- BEGIN -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
