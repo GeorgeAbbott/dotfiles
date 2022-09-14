@@ -26,8 +26,8 @@ set termguicolors           " Themes don't seem to work without this.
 " Some aliases to make my life easier 
 command W w 
 command Wq wq 
-
-
+command Q q
+command WQ wq
     
 " vim-plug -> 
 call plug#begin('~/.config/nvim/plugged')
@@ -80,7 +80,6 @@ Plug 'https://github.com/acetylen/boring.nvim'
 Plug 'https://github.com/rktjmp/lush.nvim'
 Plug 'https://github.com/mcchrish/zenbones.nvim'
 
-
 " <- end themes
 """""""""""""""
 
@@ -107,10 +106,9 @@ Plug 'glts/vim-radical'
 " Repeat commands
 Plug 'tpope/vim-repeat'
 
-
 " Rainbow brackets for easy viewing
 Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 
+let g:rainbow_active = 0
 
 " Autoclose brackets
 Plug 'cohama/lexima.vim'
@@ -119,7 +117,6 @@ let g:lexima_enable_newline_rules = 1
 let g:enable_endwise_rules = 1
 
 Plug 'alvan/vim-closetag'           " Close HTML tags
-
 
 " Modify surrounding brackets
 Plug 'tpope/vim-surround'
@@ -135,10 +132,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'      " must be last?
 nmap <F7> :NERDTreeToggle<CR>
 
-
 " Git 
 Plug 'tpope/vim-fugitive'
-
 
 Plug 'airblade/vim-gitgutter/'  " Display changes in sidebar to left
 
@@ -172,10 +167,12 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'simrat39/rust-tools.nvim' 
 Plug 'hrsh7th/vim-vsnip'
+Plug 'nvim-lua/lsp_extensions.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'folke/todo-comments.nvim'
+
 
 " For C++ development
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -185,12 +182,13 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-" Unused 
-" Plug 'rust-lang/rust.vim'
-" Plug 'dense-analysis/ale'
-
 call plug#end()
 " <- vim-plug 
+
+" :help completeopt
+set completeopt=menu,menuone,longest,noselect,noinsert
+set shortmess+=c
+set signcolumn=yes
 
 " Set Theme 
 if strftime("%H") >= 6 && strftime("%H") < 18
@@ -204,24 +202,7 @@ endif
 " numb 
 :lua require('numb').setup()
 
-" todo-comments
-lua << EOF
-  require("todo-comments").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
-" :help completeopt
-set completeopt=menu,menuone,longest,noselect
-
-set shortmess+=c
-set signcolumn=yes
-
-" Configure LSP through rust-tools.nvim plugin.
-" rust-tools will configure and enable certain LSP features for us.
-" See https://github.com/simrat39/rust-tools.nvim#configuration
+" Lua: LSP Configs 
 lua <<EOF
 local nvim_lsp = require'lspconfig'
 
@@ -272,7 +253,26 @@ require'lspconfig'.gopls.setup{
 }
 -- END   -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-require('rust-tools').setup({})
+local opts = {
+    tools = {
+        runnables = {
+            use_telescope = true 
+            }
+        },
+    inlay_hints = {
+        auto = true,
+        show_parameter_hints = false,
+        parameter_hints_prefix = "",
+        other_hints_prefix = "",
+        },
+    server = {
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy"
+                    }, } } }, }
+
+require('rust-tools').setup(opts)
 EOF
 
 " Setup Completion
@@ -310,4 +310,13 @@ cmp.setup({
     { name = 'buffer' },
   },
 })
+
+require("todo-comments").setup {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+}
 EOF
+
+" vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
+
