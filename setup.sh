@@ -103,14 +103,15 @@ git clone git.sateoki.xyz/self/dmenu    ./inst
 sh ./scripts/udcmdlink                                                           #####
 
 ######################### Set up symlinks to dotfiles ################################
-ln -s $HOME/git/dotfiles/zsh/.zshrc     $HOME/.config/zsh/.zshrc
-ln -s $HOME/git/dotfiles/zsh/.zshenv    $HOME/.zshenv
-ln -s $HOME/git/dotfiles/.xinitrc       $HOME/.xinitrc
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc     $HOME/.config/zsh/.zshrc
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-mk  $HOME/.config/zsh/.zshrc-mk
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshenv    $HOME/.zshenv
+ln -s $HOME/git/syscfg/dotfiles/.xinitrc       $HOME/.xinitrc
 
 # Music
-ln -s $HOME/git/dotfiles/mpd.conf       $HOME/.config/mpd.conf
-ln -s $HOME/git/dotfiles/mpd.conf       /etc/mpd.conf
-ln -s $HOME/git/dotfiles/ncmpcpp-config $HOME/.config/ncmpcpp/config
+ln -s $HOME/git/syscfg/dotfiles/mpd.conf       $HOME/.config/mpd.conf
+ln -s $HOME/git/syscfg/dotfiles/mpd.conf       /etc/mpd.conf
+ln -s $HOME/git/syscfg/dotfiles/ncmpcpp-config $HOME/.config/ncmpcpp/config
 
 # sddm - only install if MINIMAL="no" 
 
