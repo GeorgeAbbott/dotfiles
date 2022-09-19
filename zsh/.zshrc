@@ -189,53 +189,12 @@ abbrev-alias grr="git-rename-remotes"
 abbrev-alias gpr="git-print-remotes"
 abbrev-alias gcr="git-clone-add-remotes"
 
+# Source .zshrc-mk, which contains mkwr, mn, lle, and other mk~ commands
+source "$XDG_CONFIG_HOME/zsh/.zshrc-mk"
 
 
 # misc
 alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-
-lle() { # Life Log Entry: L~
-    if [ -z $1 ] ; then DT="today" else DT="$1" fi
-    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
-}
-
-holc () { # Holiday Entry: H~
-    if [ -z $1 ] ; then DT="today" else DT="$1" fi
-    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
-}
-
-mer() { # Month End Recap: M~
-    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
-    mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/M$(date +%Y-%m -d $DT).txt" 
-}
-
-yer() { # Year End Recap: Y~
-    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
-    mkdir -p "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12"
-    nvim "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12/Y$(date +%Y -d $DT).txt"
-}
-
-mkdream() { # Dream Record: D~
-    if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi 
-    mkdir -p "$HOME/docs/wr/dream"
-    nvim "$HOME/docs/wr/dream/D$(date --iso-8601 -d $DT).txt"
-}
-
-mn() { # make note
-    mkwr "mn/$1"
-}
-
-mkkic() { # make keep-in-case: for various largely useless notes kept "just in case"
-    mkwr "kic/$1"
-}
-
-mkwr() { # make written
-    nvim "$HOME/docs/wr/$1"
-}
-
 
 autoload -Uz compinit
 compinit
