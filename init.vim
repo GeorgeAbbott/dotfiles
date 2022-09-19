@@ -4,10 +4,10 @@ set ignorecase              " case insensitive
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
 set incsearch               " incremental search
-set tabstop=4               " number of columns occupied by a tab 
-set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
-set expandtab               " converts tabs to white space
-set shiftwidth=4            " width for autoindents
+" set tabstop=4               " number of columns occupied by a tab 
+" set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
+" set expandtab               " converts tabs to white space
+" set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed and this is cool
 set number                  " add line numbers
 set wildmode=longest,list   " get bash-like tab completions
@@ -22,12 +22,23 @@ set ttyfast                 " Speed up scrolling in Vim
 set cursorline
 set termguicolors           " Themes don't seem to work without this. 
 " set backupdir=~/.cache/vim " Directory to store backup files.
+let mapleader=','
 
 " Some aliases to make my life easier 
 command W w 
 command Wq wq 
 command Q q
 command WQ wq
+
+" Telescope shortcuts 
+noremap <leader>cs :Telescope colorscheme<CR>
+noremap <leader>gr :Telescope grep_string<CR>
+noremap <leader>lg :Telescope live_grep<CR>
+
+noremap <leader>gc :Telescope git_commits<CR>
+noremap <leader>gs :Telescope git_status<CR>
+noremap <leader>fd :Telescope fd<CR>
+
     
 " vim-plug -> 
 call plug#begin('~/.config/nvim/plugged')
