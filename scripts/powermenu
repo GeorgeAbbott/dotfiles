@@ -1,0 +1,7 @@
+#!/bin/sh
+
+resp=$(printf "♻️ shutdown\n⏼ reboot\n lock\nrestart dwm\nclose dwm" | dmenu)
+
+[ "$resp" = "♻️ shutdown" ] && sudo poweroff
+[ "$resp" = "⏼ reboot" ] && sudo reboot
+[ "$resp" = " lock" ] && slock
