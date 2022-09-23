@@ -18,7 +18,7 @@ setopt HIST_SAVE_NO_DUPS
 
 # Various
 export LANG=en_GB.UTF-8
-setopt autocd
+unsetopt autocd
 unsetopt beep
 bindkey -v
 zstyle :compinstall filename "$HOME/.zshrc"
@@ -27,13 +27,8 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -U colors && colors
 autoload -U promptinit && promptinit
 
-########## Reducing clutter in home directory ##########
-alias feh="feh --no-fehbg"
-alias newsboat="prime-run newsboat -u ~/.config/newsboat/urls"
-alias mpv="prime-run mpv"
-alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
-alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
+# Source .zshrc-xdg, which holds aliases to declutter the home directory 
+source "$XDG_CONFIG_HOME/zsh/.zshrc-xdg"
 
 ################################## orgd #######################################
 export ORGD_TD_PATH="$HOME/docs/wr/td"
@@ -46,56 +41,18 @@ fi
 source ~/.config/zsh/zsh-autopair/autopair.zsh
 autopair-init
 
-########## Aliases / Functions ##########
-# Allows declaring abbreviations:
-# declare a list of expandable aliases to fill up later
-typeset -a ealiases
-ealiases=()
+# Source the abbrev file, which holds abbrev-alias and related settings. 
+source "$XDG_CONFIG_HOME/zsh/.zshrc-abbrev"
 
-# write a function for adding an alias to the list mentioned above
-function abbrev-alias() {
-    alias $1
-    ealiases+=(${1%%\=*})
-}
-
-# expand any aliases in the current line buffer
-function expand-ealias() {
-    if [[ $LBUFFER =~ "\<(${(j:|:)ealiases})\$" ]]; then
-        zle _expand_alias
-        zle expand-word
-    fi
-    zle magic-space
-}
-zle -N expand-ealias
-
-# Bind the space key to the expand-alias function above, so that space will expand any expandable aliases
-bindkey ' '        expand-ealias
-bindkey '^ '       magic-space     # control-space to bypass completion
-bindkey -M isearch " "      magic-space     # normal space during searches
-
-# A function for expanding any aliases before accepting the line as is and executing the entered command
-expand-alias-and-accept-line() {
-    expand-ealias
-    zle .backward-delete-char
-    zle .accept-line
-}
-zle -N accept-line expand-alias-and-accept-line
-#
 # allow sudo to make use of aliases
 alias sudo="sudo "
 
-# various temporary
-pvd() {
-    mpv *$1*
-}
-
 # ls / exa 
-alias ls='ls -a --color=always'
-alias exa="exa -a --header --long --git --time-style=long-iso --group"
-abbrev-alias e="exa"
-abbrev-alias xc="clear; exa"
+alias ls='exa -a --color=always'
+alias ll="exa -a --header --long --git --time-style=long-iso --group"
+abbrev-alias x="clear; ls"
 abbrev-alias c="clear"
-abbrev-alias t="exa --tree"
+abbrev-alias t="ls --tree"
 
 # vim / nvim
 abbrev-alias v="vim"
@@ -112,7 +69,7 @@ abbrev-alias mnx="mpc next"
 abbrev-alias mpr="mpc prev"
 
 # backgrounds, wal...
-alias rbg="feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)"
+alias rbg='feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)'
 
 # cargo 
 abbrev-alias cb="cargo build"
@@ -135,62 +92,16 @@ abbrev-alias p="zathura"
 abbrev-alias o="libreoffice --writer" 
 abbrev-alias b="bat"
 
-# file manipulation
-defix() {
-    for i in  "$1"*;do mv "$i" "${i#"$1"}";done
-}
+# Source .zshrc-git, which contains all Git commands and aliases
 
-# pulseaudio - this is a temporary solution
-sv() {
-    pactl set-sink-volume 0 $1%
-}
-
-# git
 # TODO: add command to push to all remote repos, e.g. github, origin and gitlab
-abbrev-alias gb="git branch"
-abbrev-alias gco="git checkout" 
-abbrev-alias gcom="git checkout master"
-abbrev-alias gbd="git branch -d"
-abbrev-alias gp="git push"
-abbrev-alias gpa="git push origin && git push github && git push gitlab"
-abbrev-alias gpl="git pull" 
-abbrev-alias gs="git status"
-abbrev-alias ga="git add"
-abbrev-alias gc="git commit"
-abbrev-alias gcm="git commit -m"
-abbrev-alias gf="git fetch"
-abbrev-alias gcl="git clone"
-git-add-remotes() { # Add remotes
-    git remote add origin gitea@git.gabbott.dev:george/$1.git
-    git remote add github git@github.com:GeorgeAbbott/$1.git
-    git remote add gitlab git@gitlab.com:GeorgeAbbott/$1.git
-}
-git-rename-remotes() { # Rename all remotes 
-    git remote set-url origin gitea@git.gabbott.dev:george/$1.git
-    git remote set-url github git@github.com:GeorgeAbbott/$1.git
-    git remote set-url gitlab git@gitlab.com:GeorgeAbbott/$1.git
-}
-git-print-remotes() { # Print all remotes
-    git remote get-url origin 
-    git remote get-url github 
-    git remote get-url gitlab 
-}
-git-clone-add-remotes() { # Git clone from origin url and then add in the rest of remotes
-    git clone gitea@git.gabbott.dev:george/$1.git
-    cd ./$1
-    gar $1
-    cd ..
-}
-git-update-all() { # Update all - recursively iterates through dir and runs git pull 
-    # TODO implement
-}
-abbrev-alias gar="git-add-remotes"
-abbrev-alias grr="git-rename-remotes"
-abbrev-alias gpr="git-print-remotes"
-abbrev-alias gcr="git-clone-add-remotes"
+source "$XDG_CONFIG_HOME/zsh/.zshrc-git"
 
 # Source .zshrc-mk, which contains mkwr, mn, lle, and other mk~ commands
 source "$XDG_CONFIG_HOME/zsh/.zshrc-mk"
+
+# Source .zshrc-fn, which contains various miscellaneous functions 
+source "$XDG_CONFIG_HOME/zsh/.zshrc-fn"
 
 
 # misc
@@ -201,7 +112,7 @@ compinit
 # End of lines added by compinstall
 
 # z - must go after compinit
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 
 # Sourcing for zsh

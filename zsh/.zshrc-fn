@@ -1,0 +1,19 @@
+defix() {
+	for i in "$1"*;do mv "$i" "${i#"$1"}";done
+}
+
+rd() { # Rename current directory.
+	curr="$(dirname "$(pwd)")"
+	cd ..
+	mv "$curr" "$1"
+	cd "$curr" || return
+}
+
+# pulseaudio - this is a temporary solution
+sv() {
+    pactl set-sink-volume 0 $1%
+}
+
+pvd() {
+    mpv *$1*
+}

@@ -1,0 +1,7 @@
+alias feh="feh --no-fehbg"
+alias newsboat="prime-run newsboat -u ~/.config/newsboat/urls"
+alias mpv="prime-run mpv"
+alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
+alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
+

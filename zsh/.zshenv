@@ -41,7 +41,11 @@ export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 # Qt Themes
 export QT_STYLE_OVERRIDE=kvantum
 
+# Source envvar's that don't belong in Git 
+source "$HOME/.config/zsh/.zshenv-src"
+
 # Vim
 # Below does not work, TODO fix so vim finds in $XDG_CONFIG_HOME/vim
 # export VIMINIT="if has("nvim") | so ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim | else | set nocp | so ${XDG_CONFIG_HOME:-$HOME/.config}/vim/vimrc | endif"
+# export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 

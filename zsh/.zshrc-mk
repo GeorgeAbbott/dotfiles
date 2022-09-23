@@ -2,6 +2,33 @@ mkwr() {
 	nvim "$HOME/docs/wr/$1"
 }
 
+mksec() { # Make an encrypted (secure entry).
+	[ -z "$DEFAULT_GPG" ] && echo "DEFAULT_GPG not set" && return 
+	mkdir -p "/tmp/mksec"
+	nvim "/tmp/mksec/$1"
+	gpg --encrypt --armor --symmetric -r "$DEFAULT_GPG"  --output "$HOME/docs/wr/sec/$1" "/tmp/mksec/$1"
+	rm "/tmp/mksec/$1"
+}
+
+rdsec() { # Read a secure entry, will NOT write it back after. 
+	[ ! -f "$HOME/docs/wr/sec/$1" ] && echo "File $1 does not exist" && return
+	mkdir -p "/tmp/mksec"
+	gpg -d --output "/tmp/mksec/$1.decrypted" "$HOME/docs/wr/sec/$1"
+	nvim "/tmp/mksec/$1.decrypted"
+	rm "/tmp/mksec/$1.decrypted"
+}
+
+mdsec() { # Modify a secure entry, writing it back after. 
+	[ -z "$DEFAULT_GPG" ] && echo "DEFAULT_GPG not set" && return
+	[ ! -f "$HOME/docs/wr/sec/$1" ] && echo "File $1 does not exist" && return
+	mkdir -p "/tmp/mksec"
+	gpg -d --output "/tmp/mksec/$1.decrypted" "$HOME/docs/wr/sec/$1"
+	nvim "/tmp/mksec/$1.decrypted"
+	gpg --encrypt --armor --symmetric -r "$DEFAULT_GPG" --output "$HOME/docs/wr/sec/$1" "/tmp/mksec/$1.decrypted"
+	rm "/tmp/mksec/$1.decrypted"
+
+}
+
 mkrec() {
 	mkwr "rec/$1"
 }

@@ -63,11 +63,11 @@ fi
 
 ####################################################################################
 ###################### Making some directories for later use #######################
-mkdir -p $HOME/.config
-mkdir -p $HOME/.config/zsh
-mkdir -p $HOME/.config/newsboat
-mkdir -p $HOME/.config/mpd
-mkdir -p $HOME/.config/ncmpcpp
+mkdir -p $XDG_CONFIG_HOME
+mkdir -p $XDG_CONFIG_HOME/zsh
+mkdir -p $XDG_CONFIG_HOME/newsboat
+mkdir -p $XDG_CONFIG_HOME/mpd
+mkdir -p $XDG_CONFIG_HOME/ncmpcpp
 mkdir -p $HOME/.local/share/dwm
 
 #####################################################################################
@@ -103,15 +103,19 @@ git clone git.sateoki.xyz/self/dmenu    ./inst
 sh ./scripts/udcmdlink                                                           #####
 
 ######################### Set up symlinks to dotfiles ################################
-ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc     $HOME/.config/zsh/.zshrc
-ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-mk  $HOME/.config/zsh/.zshrc-mk
-ln -s $HOME/git/syscfg/dotfiles/zsh/.zshenv    $HOME/.zshenv
-ln -s $HOME/git/syscfg/dotfiles/.xinitrc       $HOME/.xinitrc
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc         $XDG_CONFIG_HOME/zsh/.zshrc
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-mk      $XDG_CONFIG_HOME/zsh/.zshrc-mk
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-fn      $XDG_CONFIG_HOME/zsh/.zshrc-fn
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-git     $XDG_CONFIG_HOME/zsh/.zshrc-git
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-abbrev  $XDG_CONFIG_HOME/zsh/.zshrc-abbrev
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshrc-xdg     $XDG_CONFIG_HOME/zsh/.zshrc-xdg
+ln -s $HOME/git/syscfg/dotfiles/zsh/.zshenv        $HOME/.zshenv
+ln -s $HOME/git/syscfg/dotfiles/.xinitrc           $HOME/.xinitrc
 
 # Music
-ln -s $HOME/git/syscfg/dotfiles/mpd.conf       $HOME/.config/mpd.conf
+ln -s $HOME/git/syscfg/dotfiles/mpd.conf       $XDG_CONFIG_HOME/mpd.conf
 ln -s $HOME/git/syscfg/dotfiles/mpd.conf       /etc/mpd.conf
-ln -s $HOME/git/syscfg/dotfiles/ncmpcpp-config $HOME/.config/ncmpcpp/config
+ln -s $HOME/git/syscfg/dotfiles/ncmpcpp-config $XDG_CONFIG_HOME/ncmpcpp/config
 
 # sddm - only install if MINIMAL="no" 
 
