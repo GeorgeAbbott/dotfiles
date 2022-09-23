@@ -4,13 +4,13 @@ set ignorecase              " case insensitive
 set mouse=v                 " middle-click paste with 
 set hlsearch                " highlight search 
 set incsearch               " incremental search
-" set tabstop=4               " number of columns occupied by a tab 
+set tabstop=4               " number of columns occupied by a tab 
 " set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 " set expandtab               " converts tabs to white space
-" set shiftwidth=4            " width for autoindents
+set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed and this is cool
 set number                  " add line numbers
-set wildmode=longest,list   " get bash-like tab completions
+set wildmode=full,longest,list   " get bash-like tab completions
 set cc=80                   " set an 80 column border for good coding style
 highlight ColorColumn ctermbg=darkcyan
 filetype plugin indent on   "allow auto-indenting depending on file type
@@ -123,9 +123,9 @@ let g:rainbow_active = 0
 
 " Autoclose brackets
 Plug 'cohama/lexima.vim'
-let g:lexima_enable_basic_rules = 1
-let g:lexima_enable_newline_rules = 1
-let g:enable_endwise_rules = 1
+let g:lexima_enable_basic_rules = 0
+let g:lexima_enable_newline_rules = 0
+let g:enable_endwise_rules = 0
 
 Plug 'alvan/vim-closetag'           " Close HTML tags
 
@@ -204,10 +204,10 @@ set signcolumn=yes
 " Set Theme 
 if strftime("%H") >= 6 && strftime("%H") < 18
     set background=light
-    colorscheme kat.nwim
-else 
+    colorscheme paper
+else
     set background=dark 
-    colorscheme kat.nwim
+    colorscheme kanagawabones
 endif
 
 " numb 
