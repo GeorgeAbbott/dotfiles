@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Backup a directory using GPG. 
+# Usage: backup-directory directory-name
+
+DIRECTORY="$1"
+
+7z a "$DIRECTORY.7z" "$DIRECTORY"
+gpg --encrypt --armor --symmetric --output "$DIRECTORY.7z.asc" "$DIRECTORY.7z"
+sha256sum "$DIRECTORY.7z.asc" | cut -c1-64 > "$DIRECTORY.asc.sum"
+
