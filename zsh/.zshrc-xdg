@@ -4,4 +4,4 @@ alias mpv="prime-run mpv"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
 alias svn="svn --config-dir \"$XDG_CONFIG_HOME\"/subversion"
-
+alias mysql-workbench='mysql-workbench --configdir="$XDG_DATA_HOME/mysql/workbench"'
