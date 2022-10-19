@@ -13,7 +13,7 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$XDG_DATA_HOME/cargo/bin"
 
 # Other
-# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export CARGO_INSTALL_ROOT="$CARGO_HOME"
@@ -26,12 +26,15 @@ export LESSHISTFILE=/dev/null
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PYTHONHISTFILE=/dev/null # in case one day they actually decide to support XDG... 
 export PYTHONHISTORY=/dev/null
+export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
+export PYTHONUSERBASE="$XDG_DATA_HOME/python"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 
 
 # ZSH Directories
