@@ -3,10 +3,11 @@ defix() {
 }
 
 rd() { # Rename current directory.
-	curr="$(dirname "$(pwd)")"
+	[ "$1" = "" ] && echo "rd: rename directory: new name missing" && return
+	curr="$(basename "$(pwd)")"
 	cd ..
 	mv "$curr" "$1"
-	cd "$curr" || return
+	cd "$1" || return
 }
 
 # pulseaudio - this is a temporary solution
