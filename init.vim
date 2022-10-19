@@ -170,7 +170,7 @@ let g:lightline = {
             \ }
             \ }
 
-" For Rust development
+" Various LSP plugins
 Plug 'hrsh7th/nvim-cmp'         " Completion framework
 Plug 'hrsh7th/cmp-nvim-lsp'     " LSP completion source for nvim-cmp
 Plug 'hrsh7th/cmp-vsnip'        " Snippet completion source for nvim-cmp
@@ -192,6 +192,7 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf'
 
 call plug#end()
 " <- vim-plug 
