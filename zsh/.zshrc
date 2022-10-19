@@ -51,7 +51,6 @@ alias sudo="sudo "
 alias ls='exa -a --color=always'
 alias ll="exa -a --header --long --git --time-style=long-iso --group"
 abbrev-alias x="clear; ls"
-abbrev-alias c="clear"
 abbrev-alias t="ls --tree"
 
 # vim / nvim
@@ -74,15 +73,6 @@ alias rbg='feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)'
 # cargo 
 abbrev-alias cb="cargo build"
 abbrev-alias cbr="cargo build --release"
-
-# todos... (changed to a~ so it doesn't clash with orgd binaries)
-abbrev-alias atd="mkwr td/todos"
-abbrev-alias atdcmp="mkwr td/todos-cmp"
-abbrev-alias atdntd="mkwr td/todos-ntd"
-
-abbrev-alias cld="mkwr cld/calendar" 
-abbrev-alias cldcmp="mkwr cld/calendar-cmp"
-abbrev-alias cldrec="mkwr cld/calendar-recurring"
 
 # other 
 abbrev-alias r="newsboat"
