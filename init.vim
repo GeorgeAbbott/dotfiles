@@ -184,6 +184,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'folke/todo-comments.nvim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'RishabhRD/lspactions'
+nnoremap <leader>ar :lua require'lspactions'.rename()<CR>
+" vim.lsp.handlers["textDocument/codeAction"] = require'lspactions'.codeaction
+" vim.cmd [[ nnoremap <leader>af :lua require'lspactions'.code_action()<CR> ]]
+" vim.cmd [[ nnoremap <leader>af :lua require'lspactions'.range_code_action()<CR> ]]
+
+
+
 
 " For C++ development
 Plug 'jackguo380/vim-lsp-cxx-highlight'
