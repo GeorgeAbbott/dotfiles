@@ -31,10 +31,15 @@ run_spectrwm() {
     spectrwm
 }
 
+run_plasma() {
+	startplasma-x11
+}
+
 case $session in
     wmferrwm            ) run_ferrwm ;;
     wmdwm               ) run_dwm ;;
     wmspectrwm          ) run_spectrwm ;;
+    wmplasma            ) run_plasma ;; 
     # No known session, try to run it as command
 esac
 
