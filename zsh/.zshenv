@@ -36,18 +36,6 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 
-# orgd
-export WRITTEN="$HOME/docs/wr"
-export ORGD_ROOT="$WRITTEN/orgd"
-
-export ORGD_TD_PATH="$ORGD_ROOT/td"
-export ORGD_CLD_PATH="$ORGD_ROOT/cld"
-export ORGD_KT_PATH="$ORGD_ROOT/kt"
-export ORGD_MED_PATH="$ORGD_ROOT/med"
-
-
-
-
 # ZSH Directories
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"

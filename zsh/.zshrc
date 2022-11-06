@@ -31,7 +31,13 @@ autoload -U promptinit && promptinit
 source "$XDG_CONFIG_HOME/zsh/.zshrc-xdg"
 
 ################################## orgd #######################################
-export ORGD_TD_PATH="$HOME/docs/wr/td"
+export WRITTEN="$HOME/docs/wr"
+export ORGD_ROOT="$WRITTEN/orgd"
+
+export ORGD_TD_PATH="$ORGD_ROOT/td"
+export ORGD_CLD_PATH="$ORGD_ROOT/cld"
+export ORGD_KT_PATH="$ORGD_ROOT/kt"
+export ORGD_MED_PATH="$ORGD_ROOT/med"
 
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
