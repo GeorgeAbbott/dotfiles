@@ -29,6 +29,10 @@ mdsec() { # Modify a secure entry, writing it back after.
 
 }
 
+lssec() {
+	ls "$HOME/docs/wr/sec" $@
+}
+
 mnrec() {
 	wr "rec/$1"
 }
