@@ -32,6 +32,8 @@ source "$XDG_CONFIG_HOME/zsh/.zshrc-xdg"
 
 ################################## orgd #######################################
 export WRITTEN="$HOME/docs/wr"
+export LLE="$WRITTEN/lle"
+export HOLIDAY="$LLE/hol"
 export ORGD_ROOT="$WRITTEN/orgd"
 
 export ORGD_TD_PATH="$ORGD_ROOT/td"
@@ -87,6 +89,9 @@ abbrev-alias r="newsboat"
 abbrev-alias p="zathura" 
 abbrev-alias o="libreoffice --writer" 
 abbrev-alias b="bat"
+
+# other, e.g. updating and other commonly used commands
+abbrev-alias pacud="sudo pacman -Syu"
 
 # Source .zshrc-git, which contains all Git commands and aliases
 
