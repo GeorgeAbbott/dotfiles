@@ -66,10 +66,45 @@ lle() { # Life Log Entry: L~
     nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
 }
 
-holc () { # Holiday Entry: H~
+# Make a holiday. For instance, mkhol 2022-11 draycott creates a directory 
+# in $HOL, which is normally $LLE/hol, or ~/docs/wr/lle/hol. The directory is 
+# 2022-11-draycott. Then you can refer to the name or the month in mnhol and 
+# holc.
+mkhol() {
+	if [ -z "$HOLIDAY" ] ; then HOL="$HOLIDAY" else HOL="$HOME/docs/wr/lle/hol" fi
+	if [ -z "$1" ] ; then 
+		# TODO: add logic to verify the date is valid
+		echo "You need to provide a date parameter"; return; fi
+	if [ -z "$2" ] ; then echo "Please enter a place where you went.";
+		return; fi
+
+	mkdir -p "$HOL/$1-$2"
+}
+
+# Make and edit the metadata associated with a holiday.
+mnholmd() { # Provide a date and name. 
+	# basic checks 
+	if [ -z "$HOLIDAY" ] ; then HOL="$HOLIDAY" else HOL="$HOME/docs/wr/lle/hol" fi
+	if [ -z "$1" ] ; then 
+		# TODO: add logic to verify the date is valid
+		echo "You need to provide a date parameter"; return; fi
+	if [ -z "$2" ] ; then echo "Please enter a place where you went.";
+		return; fi
+	# logic
+	if [ ! -d "$HOL/$1-$2" ] ; then echo "$1-$2 does not exist"; return; fi
+	if [ -f "$HOL/$1-$2/md" ] ; then 
+		nvim "$HOL/$1-$2/md"
+	else
+		echo "begin=\nend=\nwith=\nat=\n" >> "$HOL/$1-$2/md"
+		nvim "$HOL/$1-$2/md"
+	fi
+}
+
+holc () { # Holiday Entry: H~. Run with the holiday, e.g. draycott 2022-11-12.
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
     mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
     nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
+
 }
 
 mer() { # Month End Recap: M~
