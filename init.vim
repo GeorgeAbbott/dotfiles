@@ -30,6 +30,9 @@ command Wq wq
 command Q q
 command WQ wq
 
+" Highlight yanked text
+autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=4000 }
+
 " Telescope shortcuts 
 noremap <leader>cs :Telescope colorscheme<CR>
 noremap <leader>gr :Telescope grep_string<CR>
@@ -139,7 +142,7 @@ nmap <F8> :TagbarToggle<CR>
 " NerdTree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'      " must be last?
 nmap <F7> :NERDTreeToggle<CR>
 
