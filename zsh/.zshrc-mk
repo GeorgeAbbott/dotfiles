@@ -100,6 +100,20 @@ mnholmd() { # Provide a date and name.
 	fi
 }
 
+# Make an entry in the holiday; this is a replacement for holc. It is called 
+# ev~ as it relies on an envvar. Set EVMNHOL_DIR to the directory you want to
+# put the entries in, and then pass the date as the parameter. Then write up ya
+# entry! 
+evmnhol() {
+	if [ -z "$EVMNHOL_DIR" ] ; then echo "EVMNHOL_DIR is not set"; return; fi 
+	if [ -z "$1" ] ; then echo "You need to pass a date"; return; else DT="$1" fi 
+	if [ ! -d "$HOLIDAY/$EVMNHOL_DIR" ] ; then echo "$HOLIDAY/$EVMNHOL_DIR does not exist"; return; fi 
+
+	mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
+	nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
+	ln -s "../../$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt" "$HOLIDAY/$EVMNHOL_DIR/H$(date --iso-8601 -d $DT).txt"
+}
+
 holc () { # Holiday Entry: H~. Run with the holiday, e.g. draycott 2022-11-12.
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
     mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
