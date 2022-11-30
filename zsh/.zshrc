@@ -56,7 +56,8 @@ source "$XDG_CONFIG_HOME/zsh/.zshrc-abbrev"
 alias sudo="sudo "
 
 # ls / exa 
-alias ls='exa -a --color=always'
+alias ls='exa --color=always'
+alias l='exa --header --long --git --time-style=long-iso --group --color=always'
 alias ll="exa -a --header --long --git --time-style=long-iso --group"
 abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
