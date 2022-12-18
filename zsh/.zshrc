@@ -63,6 +63,7 @@ abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
 
 # vim / nvim
+alias vim="nvim"
 abbrev-alias v="vim"
 abbrev-alias n="nvim"
 
