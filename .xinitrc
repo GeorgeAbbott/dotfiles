@@ -35,11 +35,16 @@ run_plasma() {
 	startplasma-x11
 }
 
+run_plasmawl() {
+	startplasma-wayland
+}
+
 case $session in
     wmferrwm            ) run_ferrwm ;;
     wmdwm               ) run_dwm ;;
     wmspectrwm          ) run_spectrwm ;;
     wmplasma            ) run_plasma ;; 
+    wmplasmawl          ) run_plasmawl ;;
     # No known session, try to run it as command
 esac
 
