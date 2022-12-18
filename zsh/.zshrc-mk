@@ -109,6 +109,9 @@ evmnhol() {
 	if [ -z "$1" ] ; then echo "You need to pass a date"; return; else DT="$1" fi 
 	if [ ! -d "$HOLIDAY/$EVMNHOL_DIR" ] ; then echo "$HOLIDAY/$EVMNHOL_DIR does not exist"; return; fi 
 
+	# TODO: add logic to verify the date using md. But check md actually 
+	# exists first. Use date +%s -d "$(cat md | grep begin | cut -d'=' -f2)"
+
 	mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
 	nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
 	ln -s "../../$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt" "$HOLIDAY/$EVMNHOL_DIR/H$(date --iso-8601 -d $DT).txt"
@@ -127,10 +130,11 @@ mer() { # Month End Recap: M~
     nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/M$(date +%Y-%m -d $DT).txt" 
 }
 
+# Run with the year.
 yer() { # Year End Recap: Y~
     if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi
-    mkdir -p "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12"
-    nvim "$HOME/docs/wr/lle/$(date +%Y -d $DT)-12/Y$(date +%Y -d $DT).txt"
+    mkdir -p "$HOME/docs/wr/lle/$1-12"
+    nvim "$HOME/docs/wr/lle/$1-12/Y$1.txt"
 }
 
 # old atd and cld, soon to be gotten rid of anyways
@@ -143,4 +147,5 @@ abbrev-alias cld="wr cld/calendar"
 abbrev-alias cldcmp="wr cld/calendar-cmp"
 abbrev-alias cldrec="wr cld/calendar-recurring"
 
-
+# mnfin 
+alias mnfin='cd ~/docs/wr/trk/fin/; nvim $(date +%Y-%m)'
