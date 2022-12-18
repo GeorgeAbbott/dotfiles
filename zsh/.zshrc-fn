@@ -1,5 +1,11 @@
-defix() {
+# Takes a prefix, and removes that prefix from all files that have that prefix.
+deprefix() {
 	for i in "$1"*;do mv "$i" "${i#"$1"}";done
+}
+
+# Similar to [deprefix] but for suffixes.
+desuffix() {
+	rename --no-overwrite -- "$1" "" *
 }
 
 rd() { # Rename current directory.
