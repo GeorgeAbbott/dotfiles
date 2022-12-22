@@ -1,0 +1,15 @@
+# Various cd aliases for places I might want to cd to. 
+
+alias cdwr="cd ~/docs/wr"
+alias cddream="cd ~/docs/wr/dream"
+alias cdkic="cd ~/docs/wr/kic"
+alias cdlle="cd ~/docs/wr/lle"
+alias cdman="cd ~/docs/wr/man"
+alias cdorgd="cd ~/docs/wr/orgd"
+alias cdsd="cd ~/docs/wr/sd"
+alias cdsec="cd ~/docs/wr/sec"
+alias cdspec="cd ~/docs/wr/spec"
+alias cdrd="cd ~/docs/rd"
+alias cdgit="cd ~/git"
+alias cddf="cd ~/git/syscfg/dotfiles"
+alias cddfzsh="cd ~/git/syscfg/dotfiles/zsh"
