@@ -44,15 +44,15 @@ mnkic() {
 mndream() { # Dream Record: D~
 	if [ -z $1 ] ; then DT="yesterday" else DT="$1" fi 
 	mkdir -p "$HOME/docs/wr/dream"
-	nvim "$HOME/docs/wr/dream/D$(date --iso-8601 -d $DT).txt"
+	wr "dream/D$(date --iso-8601 -d $DT).txt"
 }
 
 rddream() {
 	if [ -z "$1" ] ; then 
-		nvim "$HOME/docs/wr/dream"
+		wr "dream"
 		return 
 	else
-		nvim "$HOME/docs/wr/dream/D$(date --iso-8601 -d $DT).txt"
+		wr "dream/D$(date --iso-8601 -d $DT).txt"
 	fi
 }
 
@@ -63,7 +63,7 @@ mn() { # Make note
 lle() { # Life Log Entry: L~
     if [ -z $1 ] ; then DT="today" else DT="$1" fi
     mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
-    nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
+    wr "lle/$(date +%Y-%m -d $DT)/L$(date --iso-8601 -d $DT).txt"
 }
 
 # Make a holiday. For instance, mkhol 2022-11 draycott creates a directory 
@@ -113,7 +113,7 @@ evmnhol() {
 	# exists first. Use date +%s -d "$(cat md | grep begin | cut -d'=' -f2)"
 
 	mkdir -p "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)"
-	nvim "$HOME/docs/wr/lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
+	wr "lle/$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt"
 	ln -s "../../$(date +%Y-%m -d $DT)/H$(date --iso-8601 -d $DT).txt" "$HOLIDAY/$EVMNHOL_DIR/H$(date --iso-8601 -d $DT).txt"
 }
 
