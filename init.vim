@@ -21,6 +21,7 @@ filetype plugin on
 set ttyfast                 " Speed up scrolling in Vim
 set cursorline
 set termguicolors           " Themes don't seem to work without this. 
+set autochdir
 " set backupdir=~/.cache/vim " Directory to store backup files.
 let mapleader=','
 
