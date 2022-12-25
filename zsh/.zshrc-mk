@@ -157,4 +157,4 @@ abbrev-alias coast="wr orgd/kt/coast"
 abbrev-alias bib="wr orgd/kt/biblio"
 abbrev-alias bibmanga="wr orgd/kt/biblio-manga"
 abbrev-alias bibfut="wr orgd/kt/biblio-fut"
-abbrev-alias bibfut="wr orgd/kt/biblio-rmfut" # For moved out of fut, but where to keep the notes still
+abbrev-alias bibrmfut="wr orgd/kt/biblio-rmfut" # For moved out of fut, but where to keep the notes still
