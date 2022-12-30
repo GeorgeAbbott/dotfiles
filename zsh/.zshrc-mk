@@ -139,22 +139,23 @@ yer() { # Year End Recap: Y~
 
 # old atd and cld, soon to be gotten rid of anyways
 # todos... (changed to a~ so it doesn't clash with orgd binaries)
-abbrev-alias atd="wr td/todos"
-abbrev-alias atdcmp="wr td/todos-cmp"
-abbrev-alias atdntd="wr td/todos-ntd"
+orgd() { wr "orgd/$1" }
+abbrev-alias atd="orgd td/todos"
+abbrev-alias atdcmp="orgd td/todos-cmp"
+abbrev-alias atdntd="orgd td/todos-ntd"
 
-abbrev-alias cld="wr cld/calendar" 
-abbrev-alias cldcmp="wr cld/calendar-cmp"
-abbrev-alias cldrec="wr cld/calendar-recurring"
+abbrev-alias cld="orgd cld/calendar" 
+abbrev-alias cldcmp="orgd cld/calendar-cmp"
+abbrev-alias cldrec="orgd cld/calendar-recurring"
 
 # mnfin 
 alias mnfin='cd ~/docs/wr/trk/fin/; nvim $(date +%Y-%m)'
 
 # kt: commands for kt (this should really be in orgd, but oh well for now)
-abbrev-alias kt="wr orgd/kt"
-abbrev-alias bm="wr orgd/kt/bookmark"
-abbrev-alias coast="wr orgd/kt/coast"
-abbrev-alias bib="wr orgd/kt/biblio"
-abbrev-alias bibmanga="wr orgd/kt/biblio-manga"
-abbrev-alias bibfut="wr orgd/kt/biblio-fut"
-abbrev-alias bibrmfut="wr orgd/kt/biblio-rmfut" # For moved out of fut, but where to keep the notes still
+kt() { orgd "kt/$1" }
+abbrev-alias bm="kt kt/bookmark"
+abbrev-alias coast="kt coast"
+abbrev-alias bib="kt biblio"
+abbrev-alias bibmanga="kt biblio-manga"
+abbrev-alias bibfut="kt biblio-fut"
+abbrev-alias bibrmfut="kt biblio-rmfut" # For moved out of fut, but where to keep the notes still
