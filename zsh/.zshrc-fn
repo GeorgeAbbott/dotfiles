@@ -24,3 +24,8 @@ sv() {
 pvd() {
     mpv *$1*
 }
+
+# Change a string into its kebab style, e.g. all-lower-case-with-dashes.
+intokebab() {
+	echo "$1" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z-]//g'
+}
