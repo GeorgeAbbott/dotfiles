@@ -153,7 +153,7 @@ alias mnfin='cd ~/docs/wr/trk/fin/; nvim $(date +%Y-%m)'
 
 # kt: commands for kt (this should really be in orgd, but oh well for now)
 kt() { orgd "kt/$1" }
-abbrev-alias bm="kt kt/bookmark"
+abbrev-alias bm="kt bookmark"
 abbrev-alias coast="kt coast"
 abbrev-alias bib="kt biblio"
 abbrev-alias bibmanga="kt biblio-manga"
