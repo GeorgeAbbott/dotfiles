@@ -1,4 +1,0 @@
-#!/bin/sh
-
-sudo protonvpn d 
-pkill -RTMIN+7 dwmblocks

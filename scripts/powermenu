@@ -1,9 +1,0 @@
-#!/bin/sh
-
-resp=$(printf "♻️ shutdown\n⏼ reboot\n lock\nrestart dwm\nclose X" | dmenu)
-
-[ "$resp" = "♻️ shutdown" ] && sudo poweroff
-[ "$resp" = "⏼ reboot" ] && sudo reboot
-[ "$resp" = " lock" ] && slock
-[ "$resp" = "restart dwm" ] && pkill dwm
-[ "$resp" = "close X" ] && pkill xinit

@@ -1,5 +1,0 @@
-#!/bin/sh
-# Execute dwm-xinitrc. 
-
-startx $HOME/git/dotfiles/xinit/dwm-xinitrc
-
