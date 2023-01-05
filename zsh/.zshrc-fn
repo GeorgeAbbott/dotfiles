@@ -1,31 +1,4 @@
-# Takes a prefix, and removes that prefix from all files that have that prefix.
-deprefix() {
-	for i in "$1"*;do mv "$i" "${i#"$1"}";done
-}
-
-# Similar to [deprefix] but for suffixes.
-desuffix() {
-	rename --no-overwrite -- "$1" "" *
-}
-
-rd() { # Rename current directory.
-	[ "$1" = "" ] && echo "rd: rename directory: new name missing" && return
-	curr="$(basename "$(pwd)")"
-	cd ..
-	mv "$curr" "$1"
-	cd "$1" || return
-}
-
 # pulseaudio - this is a temporary solution
 sv() {
     pactl set-sink-volume 0 $1%
-}
-
-pvd() {
-    mpv *$1*
-}
-
-# Change a string into its kebab style, e.g. all-lower-case-with-dashes.
-intokebab() {
-	echo "$1" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-zA-Z-]//g'
 }
