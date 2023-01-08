@@ -44,6 +44,9 @@ export ORGD_CLD_PATH="$ORGD_ROOT/cld"
 export ORGD_KT_PATH="$ORGD_ROOT/kt"
 export ORGD_MED_PATH="$ORGD_ROOT/med"
 
+export VISUAL="/usr/bin/nvim"
+export EDITOR="/usr/bin/nvim"
+
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
   git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh/zsh-autopair
