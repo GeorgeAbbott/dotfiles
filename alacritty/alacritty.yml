@@ -15,15 +15,15 @@ scrolling:
   multiplier: 7
 
 # Font configuration
-font: 
+font:  # TO future me: please change ~/.config/fontconfig before this
  normal:
-   family: "CodeNewRoman Nerd Font Mono"
-   style: Book
+   family: monospace
+   style: Regular
  bold:
-   family: "CodeNewRoman Nerd Font Mono"
+   family: monospace
    style: Bold 
  italic: 
-   family: "CodeNewRoman Nerd Font Mono"
+   family: monospace
    style: Italic 
  size: 6.5
 
@@ -85,7 +85,7 @@ font:
 
 
 window:
-  opacity: 0.85
+  opacity: 0.95
 import: 
   # Nice Themes: 
   # # thelovelace
