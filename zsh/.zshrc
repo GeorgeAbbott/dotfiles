@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # History
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1001
@@ -38,14 +39,19 @@ export WRITTEN="$HOME/docs/wr"
 export LLE="$WRITTEN/lle"
 export HOLIDAY="$LLE/hol"
 export ORGD_ROOT="$WRITTEN/orgd"
+export ORGD_INST_PATH="$HOME/git/proj/orgd"
+export ORGD_SCR_PATH="$ORGD_INST_PATH/scr"
 
 export ORGD_TD_PATH="$ORGD_ROOT/td"
 export ORGD_CLD_PATH="$ORGD_ROOT/cld"
 export ORGD_KT_PATH="$ORGD_ROOT/kt"
 export ORGD_MED_PATH="$ORGD_ROOT/med"
+export ORGD_CDALIAS_PATH="$ORGD_ROOT/sd/cd"
 
 export VISUAL="/usr/bin/nvim"
 export EDITOR="/usr/bin/nvim"
+
+PATH=$PATH:$HOME/.local/share/go/bin:$ORGD_SCR_PATH
 
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
@@ -68,6 +74,13 @@ alias ll="exa -a --header --long --git --time-style=long-iso --group"
 abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
 
+# cd aliases, from $ORGD_CDALIAS_PATH
+while read l ; do 
+	a="cd$(echo $l | awk -F'	' '{print $1}')"; 
+	c="$(echo $l | awk -F'	' '{print $2}')"
+	alias $a="cd $c"
+done < $ORGD_CDALIAS_PATH
+
 # vim / nvim
 alias vim="nvim"
 abbrev-alias v="vim"
@@ -85,6 +98,7 @@ abbrev-alias mpr="mpc prev"
 
 # backgrounds, wal...
 alias rbg='feh --no-fehbg --bg-fill $(shuf -n1 -e ~/bgs/*)'
+alias wlrbg='swaybg -i $(shuf -n1 -e ~/bgs/*)'
 
 # cargo 
 abbrev-alias cb="cargo build"
@@ -92,6 +106,7 @@ abbrev-alias cbr="cargo build --release"
 
 # other 
 abbrev-alias r="newsboat"
+abbrev-alias ka="killall"
 
 # documents
 abbrev-alias p="zathura" 
@@ -99,6 +114,7 @@ abbrev-alias o="libreoffice --writer"
 abbrev-alias b="bat"
 
 # other, e.g. updating and other commonly used commands
+abbrev-alias pu="sudo pacman -Syu"
 abbrev-alias pacud="sudo pacman -Syu"
 
 # Source .zshrc-git, which contains all Git commands and aliases
