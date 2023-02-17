@@ -28,6 +28,7 @@ export PYTHONHISTFILE=/dev/null # in case one day they actually decide to suppor
 export PYTHONHISTORY=/dev/null
 export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
 export PYTHONUSERBASE="$XDG_DATA_HOME/python"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GEM_HOME="$XDG_DATA_HOME"/gem
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME"/gem
