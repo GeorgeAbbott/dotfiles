@@ -31,9 +31,6 @@ autoload -U promptinit && promptinit
 # Source .zshrc-xdg, which holds aliases to declutter the home directory 
 source "$XDG_CONFIG_HOME/zsh/.zshrc-xdg"
 
-# Source .zshrc-cd, which holds cd aliases. 
-source "$XDG_CONFIG_HOME/zsh/.zshrc-cd"
-
 ################################## orgd #######################################
 export WRITTEN="$HOME/docs/wr"
 export LLE="$WRITTEN/lle"
