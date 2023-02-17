@@ -1,0 +1,41 @@
+source ~/.config/neomutt/keys
+
+# Character encoding
+set send_charset="utf-8"
+set assumed_charset="utf-8"
+
+# IMAP auth
+set imap_user           = $my_user
+set imap_pass           = $my_pass
+
+# SMTP auth
+set smtp_pass           = $my_pass
+set from                = $my_user
+set use_from            = yes
+
+# IMAP
+set mbox_type           = Maildir
+set folder              = imap://$imap_user:$imap_pass@127.0.0.1:1143/
+set record              = +Sent
+set postponed           = +Drafts
+set trash               = +Trash
+set spoolfile           = +INBOX
+mailboxes               = +INBOX
+set mail_check          = 5 # seconds
+
+# Misc
+set header_cache        = ~/.cache/neomutt.hdrcache
+set message_cachedir    = ~/.cache/neomutt.msgccdir
+unset imap_passive
+set imap_keepalive      = 300
+set mail_check          = 120
+
+# SMTP 
+set smtp_url            = smtp://$my_user:$smtp_pass@127.0.0.1:1025
+set ssl_force_tls       = yes
+set ssl_starttls        = yes
+
+# HTML
+auto_view text/html
+
+source ~/.config/neomutt/colours.muttrc
