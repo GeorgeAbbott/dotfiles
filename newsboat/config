@@ -1,15 +1,19 @@
 auto-reload yes
 reload-threads 140 
 macro y set browser "mpv %u" ; open-in-browser ; set browser "elinks %u"
+macro o set browser "firefox %u" ; open-in-browser ; set browser "elinks %u"
 
-# include /usr/share/doc/newsboat/contrib/colorschemes/nord
+# include /usr/share/doc/newsboat/contrib/colorschemes/gruvbox
 highlight feedlist "---*---" red default bold
 highlight feedlist ".*0/0.." default default invis
 
 highlight feedlist " " default default invis
 
-color listfocus yellow default standout underline bold 
+
+color listfocus default default standout underline bold 
 color listfocus_unread yellow default standout underline bold 
+
+# color h3 default default underline
 
 bind-key G end 
 bind-key g home
