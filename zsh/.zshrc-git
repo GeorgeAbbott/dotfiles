@@ -25,11 +25,13 @@ git-update-all() { # Update all - recursively iterates through dir and runs git 
 
 # Git aliases
 abbrev-alias gb="git branch"
+abbrev-alias grm="git rm"
+abbrev-alias gmv="git mv"
 abbrev-alias gco="git checkout" 
 abbrev-alias gcom="git checkout master"
 abbrev-alias gbd="git branch -d"
 abbrev-alias gp="git push"
-abbrev-alias gpa="git push origin && git push github && git push gitlab"
+abbrev-alias gpa="git-push-all"
 abbrev-alias gpl="git pull" 
 abbrev-alias gs="git status"
 abbrev-alias ga="git add"
