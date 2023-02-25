@@ -72,11 +72,14 @@ abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
 
 # cd aliases, from $ORGD_CDALIAS_PATH
+strip-comments "$ORGD_CDALIAS_PATH" | strip-blank > /tmp/orgd-cd-aliases
 while read l ; do 
 	a="cd$(echo $l | awk -F'	' '{print $1}')"; 
 	c="$(echo $l | awk -F'	' '{print $2}')"
 	alias $a="cd $c"
-done < $ORGD_CDALIAS_PATH
+done < /tmp/orgd-cd-aliases
+rm /tmp/orgd-cd-aliases
+
 
 # vim / nvim
 alias vim="nvim"

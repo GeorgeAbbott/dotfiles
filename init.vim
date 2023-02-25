@@ -186,7 +186,6 @@ Plug 'nvim-lua/lsp_extensions.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
-Plug 'folke/todo-comments.nvim'
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'RishabhRD/lspactions'
@@ -252,15 +251,6 @@ lspconfig.ccls.setup {
 require'lspconfig'.ccls.setup{}
 -- C++  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-
--- Haskell -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-require'lspconfig'.hls.setup{}
--- Haskell -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
--- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-require'lspconfig'.ltex.setup{}
-require'lspconfig'.ols.setup{}
--- Others  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- BEGIN -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 require'lspconfig'.gopls.setup{
