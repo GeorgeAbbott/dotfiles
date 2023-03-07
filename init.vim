@@ -47,9 +47,6 @@ noremap <leader>fd :Telescope fd<CR>
 " vim-plug -> 
 call plug#begin('~/.config/nvim/plugged')
 
-" Nvim LSP client
-Plug 'neovim/nvim-lspconfig'
-
 """""""""""
 " Themes ->
 Plug 'folke/tokyonight.nvim'
@@ -123,14 +120,14 @@ Plug 'tpope/vim-repeat'
 
 " Rainbow brackets for easy viewing
 Plug 'luochen1990/rainbow'
-let g:rainbow_active = 0
+let g:rainbow_active = 1
 
-" Autoclose brackets
-Plug 'cohama/lexima.vim'
-let g:lexima_enable_basic_rules = 0
-let g:lexima_enable_newline_rules = 0
-let g:enable_endwise_rules = 0
-
+""" Autoclose brackets
+"Plug 'cohama/lexima.vim'
+"let g:lexima_enable_basic_rules = 0
+"let g:lexima_enable_newline_rules = 0
+"let g:enable_endwise_rules = 0
+"
 Plug 'alvan/vim-closetag'           " Close HTML tags
 
 " Modify surrounding brackets
@@ -174,16 +171,6 @@ let g:lightline = {
             \ }
             \ }
 
-" Various LSP plugins
-Plug 'hrsh7th/nvim-cmp'         " Completion framework
-Plug 'hrsh7th/cmp-nvim-lsp'     " LSP completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'        " Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'simrat39/rust-tools.nvim' 
-Plug 'hrsh7th/vim-vsnip'
-Plug 'nvim-lua/lsp_extensions.nvim'
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'mfussenegger/nvim-dap'
 
@@ -225,105 +212,3 @@ set signcolumn=yes
 
 " numb 
 :lua require('numb').setup()
-
-" Lua: LSP Configs 
-lua <<EOF
-local nvim_lsp = require'lspconfig'
-
--- C++  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    filetypes = { "c", "cc", "cpp", "c++", "objc", "objcpp", "cppm", "c++m" };
-    highlight = {
-        lsRanges = true;
-    };
-    clang = {
-      extraArgs = { "-std=c++20" } ; 
-      excludeArgs = { "-frounding-math"} ;
-    };
-  }
-}
-require'lspconfig'.ccls.setup{}
--- C++  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
-
--- BEGIN -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-require'lspconfig'.gopls.setup{
-    cmd = { "gopls", "serve" },
-    filetypes = { "go", "gomod"},
-    root_dir = require'lspconfig/util'.root_pattern("go.work", "go.mod", ".git"),
-    settings = { 
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
--- END   -- Go   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
-local opts = {
-    tools = {
-        runnables = {
-            use_telescope = true 
-            }
-        },
-    inlay_hints = {
-        auto = true,
-        parameter_hints_prefix = "",
-        other_hints_prefix = "",
-        },
-    server = {
-        settings = {
-            ["rust-analyzer"] = {
-                checkOnSave = {
-                    command = "clippy"
-                    }, } } }, }
-
-require('rust-tools').setup(opts)
-EOF
-
-" Setup Completion
-" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
-lua <<EOF
-local cmp = require'cmp'
-cmp.setup({
-  -- Enable LSP snippets
-  snippet = {
-    expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
-  },
-
-  -- Installed sources
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
-  },
-})
-
-" vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '=>', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
-
