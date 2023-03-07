@@ -44,3 +44,4 @@ abbrev-alias grr="git-rename-remotes"
 abbrev-alias gpr="git-print-remotes"
 abbrev-alias gcr="git-clone-add-remotes"
 abbrev-alias gua="git-update-all"
+alias cdtld='cd $(git rev-parse --show-toplevel)'

@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -72,13 +73,9 @@ abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
 
 # cd aliases, from $ORGD_CDALIAS_PATH
-strip-comments "$ORGD_CDALIAS_PATH" | strip-blank > /tmp/orgd-cd-aliases
-while read l ; do 
-	a="cd$(echo $l | awk -F'	' '{print $1}')"; 
-	c="$(echo $l | awk -F'	' '{print $2}')"
-	alias $a="cd $c"
-done < /tmp/orgd-cd-aliases
-rm /tmp/orgd-cd-aliases
+while read a c ; do 
+	alias "cd$a"="cd $c"
+done <<< "$(strip-comments "$ORGD_CDALIAS_PATH" | strip-blank)"
 
 
 # vim / nvim
@@ -135,10 +132,6 @@ alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
-
-# z - must go after compinit
-eval "$(zoxide init zsh --cmd cd)"
-
 
 # Sourcing for zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
