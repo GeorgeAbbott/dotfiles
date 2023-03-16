@@ -128,7 +128,6 @@ let g:rainbow_active = 1
 "let g:lexima_enable_newline_rules = 0
 "let g:enable_endwise_rules = 0
 "
-Plug 'alvan/vim-closetag'           " Close HTML tags
 
 " Modify surrounding brackets
 Plug 'tpope/vim-surround'
