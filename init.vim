@@ -201,13 +201,13 @@ set shortmess+=c
 set signcolumn=yes
 
 " Set Theme 
-" if strftime("%H") >= 6 && strftime("%H") < 18
-"     set background=light
-"     colorscheme paper
-" else
-    set background=dark 
-    colorscheme badwolf
-" endif
+if strftime("%H") >= 6 && strftime("%H") < 18
+    set background=light
+    colorscheme tempus_totus 
+else
+  set background=dark 
+  colorscheme badwolf
+endif
 
 " numb 
 :lua require('numb').setup()
