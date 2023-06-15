@@ -37,7 +37,7 @@ export WRITTEN="$HOME/docs/wr"
 export LLE="$WRITTEN/lle"
 export HOLIDAY="$LLE/hol"
 export ORGD_ROOT="$WRITTEN/orgd"
-export ORGD_INST_PATH="$HOME/git/proj/orgd"
+export ORGD_INST_PATH="$HOME/git/pp/orgd"
 export ORGD_SCR_PATH="$ORGD_INST_PATH/scr"
 
 export ORGD_TD_PATH="$ORGD_ROOT/td"
