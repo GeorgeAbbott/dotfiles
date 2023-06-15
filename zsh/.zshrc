@@ -49,7 +49,7 @@ export ORGD_CDALIAS_PATH="$ORGD_ROOT/sd/cd"
 export VISUAL="/usr/bin/nvim"
 export EDITOR="/usr/bin/nvim"
 
-PATH=$PATH:$HOME/.local/share/go/bin:$ORGD_SCR_PATH
+PATH=$PATH:$HOME/.local/share/go/bin:$ORGD_SCR_PATH:$HOME/.local/share/python/bin
 
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
@@ -76,7 +76,6 @@ abbrev-alias t="ls --tree"
 while read a c ; do 
 	alias "cd$a"="cd $c"
 done <<< "$(strip-comments "$ORGD_CDALIAS_PATH" | strip-blank)"
-
 
 # vim / nvim
 alias vim="nvim"
@@ -112,7 +111,8 @@ abbrev-alias b="bat"
 
 # other, e.g. updating and other commonly used commands
 abbrev-alias pu="sudo pacman -Syu"
-abbrev-alias pacud="sudo pacman -Syu"
+abbrev-alias pm="sudo pacman"
+alias packages="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
 # Source .zshrc-git, which contains all Git commands and aliases
 
@@ -125,12 +125,10 @@ source "$XDG_CONFIG_HOME/zsh/.zshrc-mk"
 # Source .zshrc-fn, which contains various miscellaneous functions 
 source "$XDG_CONFIG_HOME/zsh/.zshrc-fn"
 
-
-# misc
-alias pkg-query="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-
 autoload -Uz compinit
 compinit
+zstyle ':completion:*' menu select
+zstyle ':completion::complete:*' gain-privileges 1
 # End of lines added by compinstall
 
 # Sourcing for zsh
