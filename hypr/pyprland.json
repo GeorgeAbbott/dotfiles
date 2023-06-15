@@ -1,0 +1,21 @@
+{
+	"pyprland": {
+		"plugins": [
+			"scratchpads",
+			"workspaces_follow_focus"
+		]
+	},
+
+	"scratchpads": {
+		"term": {
+			"command": "foot",
+			"animation": "fromTop",
+			"unfocus": "hide"
+		},
+		"volume": {
+			"command": "pavucontrol",
+			"unfocus": "hide",
+			"animation": "fromRight"
+		}
+	},
+}
