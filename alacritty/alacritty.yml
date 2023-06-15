@@ -89,7 +89,7 @@ window:
 import: 
   # Nice Themes: 
   # # thelovelace
-  - ~/.config/alacritty/alacritty-theme/themes/horizon-dark.yaml
+  - ~/.config/alacritty/alacritty-theme/themes/thelovelace.yaml
 
 
 
