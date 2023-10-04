@@ -51,6 +51,13 @@ export EDITOR="/usr/bin/nvim"
 
 PATH=$PATH:$HOME/.local/share/go/bin:$ORGD_SCR_PATH:$HOME/.local/share/python/bin
 
+################################ website ######################################
+export NGINX_PATH="$HOME/web/nginx"
+export WEBSITE_URL="https://gabbott.dev"
+export WEBSITE_PATH="$HOME/web/www/gabbott.dev/gabbott.dev"
+export BLOG_URL="$WEBSITE_URL/blog"
+export BLOG_PATH="$WEBSITE_PATH/blog"
+
 ########## Configuration #############
 if [[ ! -d ~/.config/zsh/zsh-autopair ]]; then
   git clone https://github.com/hlissner/zsh-autopair ~/.config/zsh/zsh-autopair
@@ -66,9 +73,9 @@ source "$XDG_CONFIG_HOME/zsh/.zshrc-abbrev"
 alias sudo="sudo "
 
 # ls / exa 
-alias ls='exa --color=always'
-alias l='exa --header --long --git --time-style=long-iso --group --color=always'
-alias ll="exa -a --header --long --git --time-style=long-iso --group"
+alias ls='eza --color=always'
+alias l='eza --header --long --git --time-style=long-iso --group --color=always --group-directories-first'
+alias ll="eza -a --header --long --git --time-style=long-iso --group --group-directories-first"
 abbrev-alias x="clear; ls"
 abbrev-alias t="ls --tree"
 
